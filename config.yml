@@ -1,0 +1,30 @@
+---
+book_repo: pivotal-cf/docs-stemcell-rn
+layout_repo: pivotal-cf/docs-layout-repo
+
+feedback_enabled: true
+
+broken_link_exclusions: iefix|arrowhead
+repo_link_enabled: true
+
+public_host: docs.pivotal.io
+
+elastic_search: true
+
+sections:
+
+- repository:
+    name: pivotal-cf/docs-stemcell-rn
+    ref: 'bot-book'
+  directory: pivotalcf/2-1/pcf-release-notes/
+  subnav_template: pcf_metrics_1_4_subnav.erb
+  product_info:
+    use_local_header: true
+    latest_stable_version: 2.1
+    local_header_img: /images/cloud_rings.png
+    local_header_title: Stemcell Release Notes
+    search_placeholder: 
+    url_prefix: pivotalcf/2-1/pcf-release-notes
+    local_product_version: 2.1
+    local_header_links: []
+    local_header_version_list:

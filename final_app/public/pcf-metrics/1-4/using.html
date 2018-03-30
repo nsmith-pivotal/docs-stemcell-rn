@@ -1,0 +1,499 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      Monitoring and Troubleshooting Apps with PCF Metrics |
+    Pivotal Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+<script type="text/javascript">
+  if (window.location.host === 'docs.pivotal.io') {
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39702075-1']);
+    _gaq.push(['_setDomainName', 'pivotal.io']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+    })();
+  }
+</script>
+
+<script type="text/javascript">
+  var blackList = ['acceptance'];
+
+  blackList.forEach(function(blackListedEnv) {
+    if (document.URL.indexOf(blackListedEnv) > -1 && blackListedEnv != "") {
+      $('head').append('<meta name="hashtag" content="PivotalMoment">');
+    }
+  });
+</script>
+
+<!-- CrazyEgg Tracking Script -->
+  <script type="text/javascript">
+  setTimeout(function(){var a=document.createElement("script");
+  var b=document.getElementsByTagName("script")[0];
+  a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0055/2990.js?"+Math.floor(new Date().getTime()/3600000);
+  a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+  </script>
+
+<!-- Munchkin Marketo Script -->
+<script type="text/javascript">
+  (function() {
+    var didInit = false;
+
+    function initMunchkin() {
+      if (didInit === false) {
+        didInit = true;
+        Munchkin.init('625-IUJ-009');
+      }
+    }
+
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = document.location.protocol + '//munchkin.marketo.net/munchkin.js';
+    s.onreadystatechange = function() {
+      if (this.readyState == 'complete' || this.readyState == 'loaded') {
+        initMunchkin();
+      }
+    };
+    s.onload = initMunchkin;
+    document.getElementsByTagName('head')[0].appendChild(s);
+  })();
+</script>
+
+</head>
+
+<body class="pcf-metrics pcf-metrics_1-4 pcf-metrics_1-4_using has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "pivotal.io";
+    </script>
+
+      <header class="global-header header header-layout js-bar-links">
+    <a class="pivotal-logo" href="/">
+    </a>
+    <a href="/" class="global-header-title">
+      <span class="title-deemph">Pivotal</span> Documentation
+    </a>
+    <div class="btn-menu" data-behavior="MenuMobile"></div>
+    <div class="header-links">
+      <div class="header-item">
+        <a href="https://network.pivotal.io/">Downloads</a>
+      </div>
+      <div class="header-item">
+        <a href="http://support.pivotal.io" target="_blank">Support</a>
+      </div>
+
+      <div class="header-item embedded-searchbar">
+          <form method="get" action="/search">
+            <input name="q" placeholder="Search PCF Metrics 1.4" class="search-box" />
+              <input type="hidden" name="product_name" value="PCF Metrics" />
+              <input type="hidden" name="product_version" value="1.4"/>
+          </form>
+      </div>
+      
+    </div>
+  </header>
+
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a id='home-nav-link' href="/pcf-metrics/1-4/index.html">Pivotal Cloud Foundry Metrics</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-4/installing.html">Installing PCF Metrics</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-4/sizing.html">Sizing PCF Metrics for Your System</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-4/using.html">Monitoring and Troubleshooting Apps with PCF Metrics</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-4/monitoringpcfmetrics.html">Monitoring PCF Metrics</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-4/troubleshooting.html">Troubleshooting PCF Metrics</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-4/architecture.html">PCF Metrics Product Architecture</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-4/rn-ki.html">Release Notes and Known Issues</a>
+      </li>
+
+    </ul>
+  </div>
+</div><!--end of sub-nav-->
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+          <div class="local-header title-container">
+    <div class="local-header version-info">
+      LATEST VERSION: 1.4 - <a href="">CHANGELOG</a>
+    </div>
+    <div class="local-header local-title clearfix">
+      <img src="/images/cloud_rings.png">
+      <span class="local-header-title">PCF Metrics
+      </span>
+      <span class="local-header local-version header-dropdown">
+        <a class="local-header header-dropdown-link">v1.4</a>
+        <span class="local-header header-dropdown-content">
+          <ul>
+                <li>
+                    <a href="http://docs.pivotal.io/pcf-metrics/1-3/using.html">v1.3</a>
+                </li>
+                <li>
+                    <a href="http://docs.pivotal.io/pcf-metrics/1-2/using.html">v1.2</a>
+                </li>
+                <li>
+                    <a href="http://docs.pivotal.io/pcf-metrics/1-1/using.html">v1.1</a>
+                </li>
+                <li>
+                    <a href="http://docs.pivotal.io/pcf-metrics/1-0/using.html">v1.0</a>
+                </li>
+          </ul>
+        </span>
+      </span>
+
+      <!-- search was here -->
+    </div>
+    <div class="local-header local-header-links">
+    </div>
+  </div>
+
+          <h1 class="title-container" >
+    Monitoring and Troubleshooting Apps with PCF Metrics
+  </h1>
+
+          <div id="js-quick-links" class="list-style-none">
+            <div class="quick-links"><ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#get-started">View an App</a></li>
+<li><a href="#time">Change the Time Frame</a></li>
+<li><a href="#metrics">Add, Edit, and Delete Charts</a></li>
+<li><a href="#time">View and Reorder Metric Charts</a></li>
+<li><a href="#app-instance">View Metrics at App-Instance Level</a></li>
+<li>
+<a href="#metrics">Interpret Metrics</a><ul>
+<li><a href="#container">Container Metrics</a></li>
+<li><a href="#network">Network Metrics</a></li>
+<li><a href="#events">Events</a></li>
+<li><a href="#custom">Custom Metrics</a></li>
+<li><a href="#logs">Logs</a></li>
+</ul>
+</li>
+<li>
+<a href="#trace">Trace App Requests</a><ul>
+<li><a href="#before">Prerequisites</a></li>
+<li><a href="#trace-explorer">Use the Trace Explorer</a></li>
+</ul>
+</li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <p>This topic describes how developers can monitor and troubleshoot their apps using Pivotal Cloud Foundry (PCF) Metrics. </p>
+
+<h2><a id="overview"></a> Overview</h2>
+
+<p>PCF Metrics helps you understand and troubleshoot the health and performance of your apps by displaying the following:</p>
+
+<ul>
+<li><a href="#container">Container Metrics</a>: Three graphs measuring CPU, memory, and disk usage percentages </li>
+<li><a href="#network">Network Metrics</a>: Three graphs measuring requests, HTTP errors, and response times</li>
+<li><a href="#custom">Custom Metrics</a>: User-customizable graphs for measuring app performance, such as Spring Boot Actuator metrics</li>
+<li><a href="#events">App Events</a>: A graph of update, start, stop, crash, SSH, and staging failure events</li>
+<li><a href="#logs">Logs</a>: A list of app logs that you can search, filter, and download</li>
+<li><a href="#trace">Trace Explorer</a>: A dependency graph that traces a request as it flows through your apps and their endpoints, along with the corresponding logs</li>
+</ul>
+
+<p>The following sections describe a standard workflow for using PCF Metrics to monitor or troubleshoot your apps.</p>
+
+<h2><a id='get-started'></a> View an App</h2>
+
+<p>In a browser, navigate to <code>metrics.YOUR-SYSTEM-DOMAIN</code> and log in with your User Account and Authentication (UAA) credentials. Choose an app for which you want to view metrics or logs. PCF Metrics respects UAA permissions such that you can view any app that runs in a space that you have access to. </p>
+
+<p><img alt="Search for an app" src="images/search.png" /></p>
+
+<p>PCF Metrics displays app data for a given time frame. See the sections below to <a href="#time">Change the Time Frame</a> for the dashboard, <a href="#metrics">Interpret Metrics</a> information on each graph, and <a href="#trace">Trace App Requests</a> with the Trace Explorer.</p>
+
+<p><img alt="Metrics UI" src="images/full.png" /></p>
+
+<h2><a id="time"></a>Change the Time Frame</h2>
+
+<p>The graphs show time along the horizontal axis. You can change the time frame for all graphs and the logs by using the time selector at the top of the window. Adjust either end of the selector or click and drag.</p>
+
+<p><img alt="time" src="images/metrics-time.png" /></p>
+
+<p><strong>Zoom</strong>: From within any graph, click and drag to zoom in on areas of interest. This adjusts all of the graphs, and the logs, to show data from that time frame.</p>
+
+<p><img src="images/metric-zoom.png" /></p>
+
+<h2><a id='metrics'></a> Add, Edit, and Delete Charts</h2>
+
+<p>The PCF Metrics dashboard allows users to add, edit, and delete charts. </p>
+
+<p><strong>Add Chart</strong>: To add a new chart, follow the steps below.</p>
+
+<ol>
+<li><p>Click <strong>+ ADD CHART</strong> at the top right of the dashboard.</p>
+
+<p><img src="images/metrics-add1.png" /></p></li>
+<li><p>In the modal window, either select a metric from the dropdown menu or type the name of the metric into the search bar to filter results. </p>
+
+<p><img src="images/metrics-add2.png" /></p></li>
+<li><p>Select an aggregation type. This determines how to combine the data from multiple instances.</p>
+
+<p><img src="images/metrics-add3.png" /></p></li>
+</ol>
+
+<p><strong>Edit Chart</strong>: To change how instances are aggregated for an existing metric, click the pencil icon on the header of the metric chart. When the <strong>Edit Chart</strong> modal window appears, you can choose the aggregation type and click <strong>Save</strong> to apply changes.</p>
+
+<p><img src="images/metrics-edit.png" /></p>
+
+<p><strong>Delete Chart</strong>: To delete an existing chart on the dashboard, click the trash can icon on the header of the metric chart and then click <strong>Delete</strong>.</p>
+
+<p><img src="images/metrics-delete.png" /></p>
+
+<h2><a id="time"></a>View and Reorder Metric Charts</h2>
+
+<p><strong>Reorder</strong>: Each metric has its own chart. You can click and drag the chart header to change the ordering of charts.</p>
+
+<p><img alt="reorder" src="images/metrics-reorder.png" /></p>
+
+<p><strong>Expand</strong>: To see more details in complex graphs, you can expand a chart by clicking the icon in the chart header.</p>
+
+<p><img src="images/metrics-expand1.png" /></p>
+
+<p>You can collapse the chart by clicking the icon again.</p>
+
+<p><img src="images/metrics-expand2.png" /></p>
+
+<h2><a id="app-instance"></a>View Metrics at App-Instance Level</h2>
+
+<p>PCF Metrics relays metric data at the app-instance level to allow for an in-depth troubleshooting experience. Users are able to view the app metrics related to a specific instance index, which correlates directly with the app instance indices shown in <a href="https://docs.pivotal.io/pivotalcf/console/manage-apps.html#manage-app">Apps Manager</a>.</p>
+
+<p>To view metrics at the app-instance level, turn the <strong>view instances</strong> toggle on.</p>
+
+<p><img alt="instances" src="images/metrics-instances1.png" /></p>
+
+<p>To select or deselect a specific app instance, select the desired instance from the <strong>instance filter</strong> dropdown menu.</p>
+
+<p><img src="images/metrics-instances2.png" /></p>
+
+<p>Alternatively, click an instance line on the metric chart that interests you to select the instance.</p>
+
+<p><img src="images/metrics-instances3.png" /></p>
+
+<h2><a id='metrics'></a> Interpret Metrics</h2>
+
+<p>See the following sections to understand how to use each of the views on the dashboard to monitor and troubleshoot your app.</p>
+
+<h3><a id='container'></a> Container Metrics</h3>
+
+<p>Three <strong>Container Metrics</strong> charts are available on the PCF Metrics dashboard:</p>
+
+<ul>
+<li><p>CPU usage percentage: <strong>cf.system.cpu</strong>
+<img src="images/cpu.png" /></p>
+
+<p>A spike in CPU might point to a process that is computationally heavy. Scaling app instances can relieve the immediate pressure, but you need to investigate the app to better understand and fix the root cause.</p></li>
+<li><p>Memory usage percentage: <strong>cf.system.memory</strong>
+<img src="images/memory.png" /></p>
+
+<p>A spike in memory might mean a resource leak in the code. Scaling app memory can relieve the immediate pressure, but you need to find and resolve the underlying issue so that it does not occur again.</p></li>
+<li><p>Disk usage percentage: <strong>cf.system.disk</strong>
+<img src="images/disk.png" /></p>
+
+<p>A spike in disk might mean the app is writing logs to files instead of STDOUT, caching data to local disk, or serializing large sessions to disk. </p></li>
+</ul>
+
+<h3><a id='network'></a> Network Metrics</h3>
+
+<p>Three <strong>Network Metrics</strong> charts are available on the PCF Metrics dashboard:</p>
+
+<ul>
+<li><p>Number of network requests per minute: <strong>cf.system.request-count</strong>
+<img src="images/request-count.png" /></p>
+
+<p>A spike in HTTP requests means more users are using your app. Scaling app instances can reduce the response time.</p></li>
+<li><p>Number of network request errors per minute: <strong>cf.system.request-error-count</strong>
+<img src="images/request-error-count.png" /></p>
+
+<p>A spike in HTTP errors means one or more 5xx errors have occurred. Check your app logs for more information.</p></li>
+<li><p>Average latency of a request in milliseconds: <strong>cf.system.latency</strong>
+<img src="images/latency.png" /></p>
+
+<p>A spike in response time means your users are waiting longer. Scaling app instances can spread that workload over more resources and result in faster response times.</p></li>
+</ul>
+
+<h3><a id='events'></a> Events</h3>
+
+<p>The <strong>Events</strong> graph shows the following app events: <strong>Crash</strong>, <strong>Fail</strong> (staging failures), <strong>Update</strong>, <strong>Stop</strong>, <strong>Start</strong>, and <strong>SSH</strong>. </p>
+
+<p><img alt="Events" src="images/events.png" /></p>
+
+<p class="note"><strong>Note</strong>: The <b>SSH</b> event corresponds to someone successfully using SSH to access a container that runs an instance of the app.</p>
+
+<p>See the following topics for more information about app events:</p>
+
+<ul>
+<li><a href="https://docs.pivotal.io/pivotalcf/devguide/deploy-apps/start-restart-restage.html">About Starting Applications</a></li>
+<li><a href="https://docs.pivotal.io/pivotalcf/devguide/deploy-apps/troubleshoot-app-health.html">Troubleshooting Application Deployment and Health</a></li>
+</ul>
+
+<h3><a id='custom'></a> Custom Metrics</h3>
+
+<p>Users can configure their apps to emit custom metrics out of the <a href="https://docs.pivotal.io/pivotalcf/loggregator/architecture.html#firehose">Loggregator Firehose</a> and then view these metrics on the PCF Metrics dashboard. For steps on how to set up your apps to emit custom metrics, refer to the <a href="https://docs.pivotal.io/metrics-forwarder/index.html">Metrics Forwarder Documentation</a>. If you have configured the apps correctly, you should be able to automatically see custom metrics on the PCF Metrics dashboard when you add a chart.</p>
+
+<p><img src="images/metrics-custom.png" /></p>
+
+<p>In addition, Spring Boot apps with actuators implemented emit <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-metrics.html">Spring Boot Actuator metrics</a> out of the box, without any changes to source code. In PCF Metrics, these metrics look similar to the following:</p>
+
+<p><img src="images/metrics-spring.png" /></p>
+
+<h3><a id="logs"></a>Logs</h3>
+
+<p>The <strong>Logs</strong> view displays app log data ingested from the Loggregator Firehose, including a histogram that shows log frequency for the current time frame:</p>
+
+<p><img alt="Logs" src="images/logs.png" /></p>
+
+<p>The green time needle visible on metrics charts and the logs histogram indicates the beginning of the logs. Depending on the sort order of your logs, you can see different results:</p>
+
+<ul>
+<li><p>Sort by <strong>newest first (default)</strong>:
+<img src="images/newest-first.png" /></p>
+
+<p>The logs drawer retrieves all logs in the selected time frame that is <em>older than/to the left of</em> the needle. The log outlined in green is the newest log among the logs located to the left of the needle placement.</p></li>
+<li><p>Sort by <strong>oldest first</strong>:
+<img src="images/oldest-first.png" /></p>
+
+<p>The logs drawer retrieves all logs in the selected time frame that is <em>newer than/to the right of</em> the needle. The log outlined in green is the oldest log among the logs located to the right of the needle placement.</p></li>
+</ul>
+
+<p>To adjust the placement of the time needle, click the handle at the bottom of the needle and drag to reposition it. Alternatively, you can click anywhere along the x-axis of a metric chart or the logs histogram to snap the needle to that position.</p>
+
+<p>You can interact with the <strong>Logs</strong> view in the following ways:</p>
+
+<ul>
+<li><strong>Keyword</strong>: Perform a keyword search. The histogram updates with blue bars based on what you enter. Hover over a histogram bar to view the number of logs for a specific time.</li>
+<li><strong>Highlight</strong>: Enter a term to highlight within your search. The histogram updates with yellow bars based on the results. Hover over a histogram bar to view the number of logs for a specific time that contain the highlighted term.</li>
+<li><strong>Sources</strong>: Choose which sources to display logs from. For more information, see <a href="https://docs.pivotal.io/pivotalcf/devguide/deploy-apps/streaming-logs.html#format">Log Types and Their Messages</a>.</li>
+<li><strong>Order</strong>: Modify the order in which logs appear. </li>
+<li><strong>Download</strong>: Download a file containing logs for the current search. </li>
+<li><strong>Copy</strong>: Click the copy icon to copy the text of the log.</li>
+<li><strong>View in Trace Explorer</strong>: Open a window to see the trace of the request associated with the log. See <a href="#trace">Trace App Requests</a>.</li>
+</ul>
+
+<h2><a id="trace"></a>Trace App Requests</h2>
+
+<p>A request to one of your apps initiates a workflow within the app or system of apps. The record of this workflow is a <em>trace</em>, which you can use to troubleshoot app failures and latency issues. In the Trace Explorer view, PCF Metrics displays an interactive graph of a trace and its corresponding logs. See the sections below to understand how to use the Trace Explorer.</p>
+
+<p>For more information about traces, see <a href="http://opentracing.io/documentation/#what-is-a-trace">What is a Trace?</a> in the <em>Open Tracing</em> documentation. </p>
+
+<h3><a id="before"></a> Prerequisites</h3>
+
+<p>PCF Metrics constructs the Trace Explorer view using trace IDs shared across app logs. Before you <a href="#trace-explorer">use the Trace Explorer</a>, examine the following list to ensure PCF metrics can extract the necessary data from your app logs for your specific app type. </p>
+
+<ul>
+<li><strong>Spring</strong>: Follow the steps below.
+
+<ol>
+<li>Ensure you are using Spring Boot v1.4.3 or later. </li>
+<li>Ensure you are using Spring Cloud Sleuth v1.0.12 or later. </li>
+<li>Add the following to your app dependency file:
+<pre>dependencies { (2)
+compile &quot;org.springframework.cloud:spring-cloud-starter-sleuth&quot;
+}</pre></li>
+</ol></li>
+<li><strong>Node.js</strong>, <strong>Go</strong>, and <strong>Python</strong>: Ensure that the servers associated with your app do not modify HTTP requests in a way that removes the <code>X-B3-TraceId</code>, <code>X-B3-SpanId</code>, and <code>X-B3-ParentSpan</code> headers from a request. You also need to add Trace ID, Span ID, and Parent Span ID to the SLF4J MDC in your app logs to correlate logs within the Trace Explorer.</li>
+<li><strong>Ruby</strong>: Ruby servers that use a library depending on Rack modify HTTP request headers in a way that is incompatible with PCF Metrics. If you want to trace app requests for your Ruby apps, ensure that your framework does not rely on Rack. You may need to write a raw Ruby server that preserves the <code>X-B3-TraceId</code>, <code>X-B3-SpanId</code>, and <code>X-B3-ParentSpan</code> headers in the request. You also need to add Trace ID, Span ID, and Parent Span ID to the SLF4J MDC in your app logs to correlate logs within the Trace Explorer.</li>
+</ul>
+
+<h3><a id="trace-explorer"></a> Use the Trace Explorer</h3>
+
+<p>This section explains how to view the trace for a request received by your app and interact with the Trace Explorer.</p>
+
+<ol>
+<li><p>Select an app on the PCF Metrics dashboard.</p></li>
+<li><p>Click the Trace Explorer icon in a log for which you want to trace the request.</p>
+
+<p><img alt="Hover over trace icon" src="images/click-trace.png" /></p>
+
+<ul>
+<li>The Trace Explorer displays the apps and endpoints involved in completing a request, along with the corresponding logs:
+<img alt="Trace Explorer" src="images/trace-explorer.png" />
+A request corresponds to a single trace ID displayed in the top left corner. Each row includes an app in the left column and a <em>span</em> in the right column. A span is a particular endpoint within the app and the time it took to execute in milliseconds. By default, the graph lists each app and endpoint in the order they were called.
+<p class="note"><strong>Note</strong>: If you do not have access to the space for an app involved in the request, you cannot see the spans or logs from that app.</p></li>
+<li>You can click a span to show only logs from that span or any number of spans to toggle which logs appear. Clicking a span also creates a box with that particular span ID in the <strong>Logs</strong> view:
+<img alt="Click Span" src="images/click-span.png" /><br></li>
+<li>If you click <code>APP APP-NAME</code> within a log, PCF Metrics returns you to the dashboard view for that app, with the time frame focused on the time of the log that you clicked from. </li>
+</ul></li>
+</ol>
+
+        <div><a id='repo-link' href='http://github.com/pivotal-cf/docs-metrics/tree/1.4/using.html.md.erb'>View the source for this page in GitHub</a></div>
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    <div class="copyright">
+  <a href='https://pivotal.io/privacy-policy'>Privacy Policy</a> | 
+  <a href='https://pivotal.io/terms-of-use'>Terms of Use</a><br/>
+  <a href='/'>Pivotal Documentation</a>
+  &copy; 2017 <a href='https://pivotal.io'>Pivotal Software</a>, Inc. All Rights Reserved.
+</div>
+<div class="support">
+  Need help? <a href="http://support.pivotal.io" target="_blank">Visit Support</a>
+</div>
+
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

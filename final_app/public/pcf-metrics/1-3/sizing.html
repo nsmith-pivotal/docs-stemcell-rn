@@ -1,0 +1,619 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      Sizing PCF Metrics for Your System |
+    Pivotal Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+<script type="text/javascript">
+  if (window.location.host === 'docs.pivotal.io') {
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39702075-1']);
+    _gaq.push(['_setDomainName', 'pivotal.io']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+    })();
+  }
+</script>
+
+<script type="text/javascript">
+  var blackList = ['acceptance'];
+
+  blackList.forEach(function(blackListedEnv) {
+    if (document.URL.indexOf(blackListedEnv) > -1 && blackListedEnv != "") {
+      $('head').append('<meta name="hashtag" content="PivotalMoment">');
+    }
+  });
+</script>
+
+<!-- CrazyEgg Tracking Script -->
+  <script type="text/javascript">
+  setTimeout(function(){var a=document.createElement("script");
+  var b=document.getElementsByTagName("script")[0];
+  a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0055/2990.js?"+Math.floor(new Date().getTime()/3600000);
+  a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+  </script>
+
+<!-- Munchkin Marketo Script -->
+<script type="text/javascript">
+  (function() {
+    var didInit = false;
+
+    function initMunchkin() {
+      if (didInit === false) {
+        didInit = true;
+        Munchkin.init('625-IUJ-009');
+      }
+    }
+
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = document.location.protocol + '//munchkin.marketo.net/munchkin.js';
+    s.onreadystatechange = function() {
+      if (this.readyState == 'complete' || this.readyState == 'loaded') {
+        initMunchkin();
+      }
+    };
+    s.onload = initMunchkin;
+    document.getElementsByTagName('head')[0].appendChild(s);
+  })();
+</script>
+
+</head>
+
+<body class="pcf-metrics pcf-metrics_1-3 pcf-metrics_1-3_sizing has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "pivotal.io";
+    </script>
+
+      <header class="global-header header header-layout js-bar-links">
+    <a class="pivotal-logo" href="/">
+    </a>
+    <a href="/" class="global-header-title">
+      <span class="title-deemph">Pivotal</span> Documentation
+    </a>
+    <div class="btn-menu" data-behavior="MenuMobile"></div>
+    <div class="header-links">
+      <div class="header-item">
+        <a href="https://network.pivotal.io/">Downloads</a>
+      </div>
+      <div class="header-item">
+        <a href="http://support.pivotal.io" target="_blank">Support</a>
+      </div>
+
+      <div class="header-item embedded-searchbar">
+          <form method="get" action="/search">
+            <input name="q" placeholder="Search PCF Metrics 1.3" class="search-box" />
+              <input type="hidden" name="product_name" value="PCF Metrics" />
+              <input type="hidden" name="product_version" value="1.3"/>
+          </form>
+      </div>
+      
+    </div>
+  </header>
+
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a id='home-nav-link' href="/pcf-metrics/1-3/index.html">Pivotal Cloud Foundry Metrics</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-3/installing.html">Installing PCF Metrics</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-3/sizing.html">Sizing PCF Metrics for Your System</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-3/using.html">Monitoring and Troubleshooting Apps with PCF Metrics</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-3/troubleshooting.html">Troubleshooting PCF Metrics</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-3/architecture.html">PCF Metrics Product Architecture</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-3/rn-ki.html">Release Notes and Known Issues</a>
+      </li>
+
+    </ul>
+  </div>
+</div><!--end of sub-nav-->
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+          <div class="local-header title-container">
+    <div class="local-header version-info">
+      LATEST VERSION: 1.4 - <a href="">CHANGELOG</a>
+    </div>
+    <div class="local-header local-title clearfix">
+      <img src="/images/cloud_rings.png">
+      <span class="local-header-title">PCF Metrics
+      </span>
+      <span class="local-header local-version header-dropdown">
+        <a class="local-header header-dropdown-link">v1.3</a>
+        <span class="local-header header-dropdown-content">
+          <ul>
+                <li>
+                    <a href="http://docs.pivotal.io/pcf-metrics/1-4/sizing.html">v1.4</a>
+                </li>
+                <li>
+                    <a href="http://docs.pivotal.io/pcf-metrics/1-2/sizing.html">v1.2</a>
+                </li>
+                <li>
+                    <a href="http://docs.pivotal.io/pcf-metrics/1-1/sizing.html">v1.1</a>
+                </li>
+                <li>
+                    <a href="http://docs.pivotal.io/pcf-metrics/1-0/sizing.html">v1.0</a>
+                </li>
+          </ul>
+        </span>
+      </span>
+
+      <!-- search was here -->
+    </div>
+    <div class="local-header local-header-links">
+    </div>
+  </div>
+
+          <h1 class="title-container" >
+    Sizing PCF Metrics for Your System
+  </h1>
+
+          <div id="js-quick-links" >
+            <div class="quick-links"><ul>
+<li>
+<a href="#metrics-datastore">Configuring the Metrics Datastore</a><ul>
+<li><a href="#metrics-considerations">Considerations for Scaling</a></li>
+<li><a href="#metrics-procedures">Procedures for Scaling</a></li>
+</ul>
+</li>
+<li>
+<a href="#log-datastore">Configuring the Log Datastore</a><ul>
+<li><a href="#log-considerations">Considerations for Scaling</a></li>
+<li><a href="#log-procedures">Procedures for Scaling</a></li>
+</ul>
+</li>
+<li>
+<a href="#temp-datastore">Configuring the Temporary Datastore</a><ul><li><a href="#temp-procedures">Procedure for Scaling</a></li></ul>
+</li>
+<li>
+<a href="#ingestor">Configuring the Ingestor</a><ul>
+<li><a href="#ingestor-considerations">Considerations for Scaling</a></li>
+<li><a href="#ingestor-procedures">Procedures for Scaling</a></li>
+</ul>
+</li>
+<li>
+<a href="#logqueue">Configuring the Logqueues</a><ul>
+<li><a href="#logqueue-considerations">Considerations for Scaling</a></li>
+<li><a href="#logqueue-procedures">Procedures for Scaling</a></li>
+</ul>
+</li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <style>
+    .note.warning {
+        background-color: #fdd;
+        border-color: #fbb
+    }
+
+    .note.warning:before {
+        color: #f99;
+     }
+</style>
+
+<p>This topic describes how to configure Pivotal Cloud Foundry (PCF) Metrics for high availability. Operators can use these procedures to optimize PCF Metrics for high capacity.</p>
+
+<p>For more information about PCF Metrics components, see the <a href="/pcf-metrics/1-3/architecture.html">PCF Metrics Product Architecture</a> topic.</p>
+
+<h2><a id='metrics-datastore'></a> Configuring the Metrics Datastore</h2>
+
+<p>PCF Metrics stores metrics in a MySQL cluster.</p>
+
+<p>To customize PCF Metrics for high capacity, you can add memory and persistent disk to the MySQL server nodes.</p>
+
+<h3><a id='metrics-considerations'></a> Considerations for Scaling</h3>
+
+<p>Because apps emit logs at different volumes and frequencies, you should not scale the MySQL server nodes in accordance to the number of app instances in your deployment. Because of the ease in scaling these components, we recommend starting with a minimal configuration then evaluating performance over a period of time and scaling. As long as persistent disk is being scaled up, there should not be any fear of losing data. </p>
+
+<p>To determine approximate starting memory and disk allocation for each MySQL server node, use the following example configurations:</p>
+
+<h4>Small: Test Use ~100 Apps</h4>
+
+<p class="note warning"><strong>WARNING:</strong> Do NOT attempt to size your PCF Metrics deployment any smaller than this setting. These are the minimum resources required.</p>
+
+<table><thead>
+<tr>
+<th>Job</th>
+<th>Instances</th>
+<th>Persistent Disk Type</th>
+<th>VM Sizing</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>MySQL Server</td>
+<td>1</td>
+<td>50 GB</td>
+<td>CPU: 1, RAM: 1&nbsp;GB, disk: 8&nbsp;GB</td>
+</tr>
+<tr>
+<td>MySQL Proxy</td>
+<td>1</td>
+<td>None</td>
+<td>CPU: 1, RAM: 1&nbsp;GB, disk: 8&nbsp;GB</td>
+</tr>
+<tr>
+<td>MySQL Monitor</td>
+<td>0</td>
+<td>None</td>
+<td>N/A</td>
+</tr>
+</tbody></table>
+
+<h4>Medium: Production Use ~5000 Apps</h4>
+
+<table><thead>
+<tr>
+<th>Job</th>
+<th>Instances</th>
+<th>Persistent Disk Type</th>
+<th>VM Sizing</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>MySQL Server</td>
+<td>3</td>
+<td>500 GB</td>
+<td>CPU: 2, RAM: 12&nbsp;GB, disk: 32&nbsp;GB</td>
+</tr>
+<tr>
+<td>MySQL Proxy</td>
+<td>1</td>
+<td>None</td>
+<td>CPU: 2, RAM: 4&nbsp;GB, disk: 8&nbsp;GB</td>
+</tr>
+<tr>
+<td>MySQL Monitor</td>
+<td>1</td>
+<td>None</td>
+<td>CPU: 2, RAM: 4&nbsp;GB, disk: 8&nbsp;GB</td>
+</tr>
+</tbody></table>
+
+<h4>Large: Production Use ~15000 Apps</h4>
+
+<table><thead>
+<tr>
+<th>Job</th>
+<th>Instances</th>
+<th>Persistent Disk Type</th>
+<th>VM Sizing</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>MySQL Server</td>
+<td>3</td>
+<td>~1.5 TB</td>
+<td>CPU: 8, RAM: 64&nbsp;GB, disk: 160&nbsp;GB</td>
+</tr>
+<tr>
+<td>MySQL Proxy</td>
+<td>1</td>
+<td>None</td>
+<td>CPU: 2, RAM: 8&nbsp;GB, disk: 32&nbsp;GB</td>
+</tr>
+<tr>
+<td>MySQL Monitor</td>
+<td>1</td>
+<td>None</td>
+<td>CPU: 2, RAM: 4&nbsp;GB, disk: 8&nbsp;GB</td>
+</tr>
+</tbody></table>
+
+<p class="note warning"><strong>WARNING:</strong> The number of instances of MySQL Server MUST be an odd number. To read more about scaling MySQL Server instances [here](http://docs.pivotal.io/p-mysql/1-10/architecture.html#even-number).</p>
+
+<p>Use these results as guidelines. Consider configuring your MySQL server nodes with additional memory and disk.
+If your deployment adds additional app instances, consider configuring your MySQL server nodes with additional memory and disk.</p>
+
+<h3><a id='metrics-procedures'></a> Procedures for Scaling</h3>
+
+<p>After determining the amount of memory and persistent disk required for each MySQL server node, perform the following steps:</p>
+
+<ol>
+<li>Navigate to the Ops Manager Installation Dashboard and click the <strong>Metrics</strong> tile.</li>
+<li>From the <strong>Settings</strong> tab of the <strong>Metrics</strong> tile, click <strong>Resource Config</strong>.</li>
+<li><p>Modify the memory limit or persistent disk allocation as needed for your environment.</p>
+
+<p class="note warning"><strong>WARNING:</strong> There have been issues with Ops Manager BOSH Director using persistent disks larger than 2&nbsp;TB.</p></li>
+<li><p>If you modify the memory allocation for the MySQL server nodes on PCF Metrics v1.3.4 or older, you must also update the MySQL InnoDB Buffer Size setting. Pivotal recommends that you set the buffer size to 80% of the memory allocated to that VM. To change the MySQL InnoDB Buffer Size:</p>
+
+<ol>
+<li>Navigate to the Ops Manager Installation Dashboard and click the <strong>Metrics</strong> tile.</li>
+<li>From the <strong>Settings</strong> tab of the <strong>Metrics</strong> tile, click <strong>Data Store</strong>.</li>
+<li>Update the <strong>MySQL InnoDB Buffer Size</strong> input field.</li>
+</ol></li>
+</ol>
+
+<h2><a id='log-datastore'></a> Configuring the Log Datastore</h2>
+
+<p>PCF Metrics uses Elasticsearch to store logs. Each Elasticsearch node contains multiple shards of log data, divided by time slice. To customize PCF Metrics for high capacity, you can scale the number of Elasticsearch data nodes.</p>
+
+<h3><a id='log-considerations'></a> Considerations for Scaling</h3>
+
+<p>To determine the number of Elasticsearch data nodes required for PCF Metrics, consider how many logs the apps in your deployment emit and the average size of each log.</p>
+
+<p>If your average log size is 1 kilobyte, and each node has 1 terabyte of available disk space, then each node has a maximum storage capacity of 1 billion log messages. If your apps emit 3 billion logs over a 24-hour period, you need at least 3 nodes to hold the data and 3 additional nodes for high-availability replication. </p>
+
+<p>This example assumes that your apps emit logs at a continuous rate over 24 hours. However, apps typically do not emit logs continuously. If your apps emit 2 billion of the 3 billion logs between 8 AM and 4 PM, you must determine the minimum node-to-shard ratio to accommodate that rate over the 8-hour period. Because your apps emit 1 billion logs over a 4 hour span, you need at least 6 nodes (24 hours/6 nodes = 4 hours worth of shards per node) to hold the data and an additional 6 nodes for high-availability replication.   </p>
+
+<p>You can also use the throughput of logs per minute to help determine how many Elasticsearch data nodes to provision. As a general rule, provision one data node for every 5000 logs received in one minute.</p>
+
+<h3><a id='log-procedures'></a> Procedures for Scaling</h3>
+
+<p class="note warning">
+<strong>WARNING</strong>: If you modify the number of Elasticsearch instances,
+               the Elasticsearch cluster temporarily enters an unhealthy period during which
+               it does not ingest any new logs data, due to shard allocation.</p>
+
+<p>After determining the number of Elasticsearch nodes needed for your deployment, perform the following steps to scale your nodes:</p>
+
+<ol>
+<li>Navigate to the Ops Manager Installation Dashboard and click the <strong>Metrics</strong> tile.</li>
+<li>From the <strong>Settings</strong> tab of the <strong>Metrics</strong> tile, click <strong>Resource Config</strong>.</li>
+<li>Locate the <strong>ElasticSearchData</strong> job and select the dropdown menu under <strong>Instances</strong> to change the number of instances.
+<br>
+<img src="images/elasticsearch.png" /></li>
+<li>Click <strong>Save</strong>.<br></li>
+</ol>
+
+<h2><a id='temp-datastore'></a> Configuring the Temporary Datastore</h2>
+
+<p class="note"><strong>Note</strong>: PCF Metrics uses the temporary datastore only when upgrading from v1.3 or later.</p>
+
+<p>During Elasticsearch downtime, including upgrades, PCF Metrics stores logs from the Loggregator Firehose in a temporary Redis datastore. When the upgrade finishes, the the Elasticsearch logqueue restores data from the temporary datastore by placing it in Elasticsearch. See <a href="/pcf-metrics/1-3/architecture.html">PCF Metrics Product Architecture</a> for more information. </p>
+
+<h3><a id='temp-procedures'></a> Procedure for Scaling</h3>
+
+<p>This procedure describes how to size the temporary datastore for your system by calculating your requirements and setting the VM size in Ops Manager. </p>
+
+<h4>Calculate Storage Requirements</h4>
+
+<p>Calculate the storage requirements of the temporary datastore using the table below as a guide:</p>
+
+<table>
+    <tr>
+        <th>Variable</th>
+        <th>Estimate a value for the variable</th>
+    </tr>
+    <tr>
+        <td><code>AvgLogSize</code></td>
+        <td>Collect a sample of logs from your apps and calculate the average size of a log file in KB. 
+        <p class="note"><strong>Note</strong>: PCF apps run on <a href="https://docs.pivotal.io/pivotalcf/concepts/diego/diego-architecture.html">Diego</a> cells that do not emit individual logs greater than approximately 60 KB. See <a href="https://github.com/cloudfoundry/loggregator#log-message-size-constraints">Log Message Size Constraints.</a></p></td>
+    </tr>
+    <tr>
+        <td><code>LogsPerSec</code></td>
+        <td>
+            <ol>
+                <li>
+                    Install the <a href="https://docs.pivotal.io/loggregator/cli-plugin.html">nozzle plugin</a> for the cf CLI if you do not already have it. 
+                </li>
+                <li>
+                    Run following command to estimate of the volume of <code>LogMessages</code> emitted from the Loggregator Firehose. Every 10 seconds, the command gives you the average number of log messages per second, averaged over the previous 10 seconds.
+            <pre class="terminal">$ cf nozzle -filter LogMessage | pv -l -i10 -r >/dev/null
+[50.5 /s]</pre>
+                </li>
+            </ol>
+        </td>
+    </tr>
+    <tr>
+        <td><code>UpgradeTime</code></td>
+        <td>Estimate how long your PCF Metrics upgrade will take. In tests in a large production environment, the upgrade takes 20–30 minutes.</td>
+    </tr>
+    <tr>
+        <td><code>RedisRAM</code></td>
+        <td>Find the value for <code>RedisRAM</code> using the following calculation:<br>
+<code>RedisRAM = AvgLogSize * LogsPerSec * UpgradeTime * 60</code></td>
+    </tr>
+    <tr>
+        <td>
+        <code>AdjustedRedisRAM</code>
+        </td>
+        <td>Because Redis only allows VMs to use <a href="https://docs.pivotal.io/redis/installing.html#service-plans">45% of their allocated RAM</a>, adjust the storage requirement as follows:<br><code>AdjustedRedisRAM = RedisRAM / 0.45</code></td>
+    </tr>
+</table>
+
+<h4>Set VM Size</h4>
+
+<p>Follow these steps to configure the size of the Redis VM for the temporary datastore based on your calculations.</p>
+
+<p class="note"><strong>Note</strong>: In the case that the temporary datastore becomes full, Redis uses the <code>volatile-ttl</code> eviction policy to continue storing incoming logs. For more information, see the <i>Eviction policies</i> section of <a href="https://redis.io/topics/lru-cache">Using Redis as an LRU cache</a>.</p>
+
+<ol>
+<li><p>Navigate to the Ops Manager Installation Dashboard and click the <strong>Redis</strong> tile.</p></li>
+<li><p>From the <strong>Settings</strong> tab, click <strong>Resource Config</strong>. </p></li>
+<li><p>In the <strong>Dedicated Node</strong> row, under <strong>VM Type</strong>, select an option with at least enough <strong>RAM</strong> to support the value for <code>AdjustedRedisRAM</code>. </p></li>
+<li><p>Click <strong>Save</strong>. </p></li>
+</ol>
+
+<h2><a id='ingestor'></a> Configuring the Ingestor</h2>
+
+<p>PCF Metrics deploys the Ingestor as an app within PCF. The Ingestor consumes logs and metrics from the Loggregator Firehose, sending metrics and logs to their respective Logqueue apps. To customize PCF Metrics for high capacity, you can scale the number of Ingestor app instances and increase the amount of memory per instance.</p>
+
+<h3><a id='ingestor-considerations'></a> Considerations for Scaling</h3>
+
+<p>Because apps emit logs at different volumes and frequencies, you should not scale the Ingestor by matching the number of Ingestor instances to the number of app instances in your deployment.</p>
+
+<p>Because Ingestor performance is affected by Loggregator performance, it can be difficult to determine in advance the proper configuration. Because of the ease in scaling these components, we recommend starting with a minimal configuration then evaluating performance over a period of time and scaling </p>
+
+<p>The Ingestor app can handle relatively large loads. For high availability, you must have at least two instances of the Ingestor app running. If your deployment runs fewer than 2000 app instances, two instances of the Ingestor app are sufficient. </p>
+
+<h3><a id='ingestor-procedures'></a> Procedures for Scaling</h3>
+
+<p class="note warning"><strong>WARNING: </strong> If you decrease the number of Ingestor instances, you may lose data currently being processed on the instances you eliminate.</p>
+
+<p>After determining the number of Ingestor app instances needed for your deployment, perform the following steps to scale the Ingestor:</p>
+
+<ol>
+<li><p>Target your Cloud Controller with the Cloud Foundry Command Line Interface (cf CLI). If you have not installed the cf CLI, see the <a href="http://docs.pivotal.io/pivotalcf/cf-cli/install-go-cli.html">Installing the cf CLI</a> topic.
+<pre class="terminal">
+$ cf api api.YOUR-SYSTEM-DOMAIN
+Setting api endpoint to api.YOUR-SYSTEM-DOMAIN...
+OK
+API endpoint:   <span>https:</span>//api.YOUR-SYSTEM-DOMAIN (API version: 2.54.0)
+Not logged in. Use &#39;cf login&#39; to log in.
+</pre></p></li>
+<li><p>Log in with your UAA administrator credentials. To retrieve these credentials, navigate to the <strong>Pivotal Elastic Runtime</strong> tile in the Ops Manager Installation Dashboard and click <strong>Credentials</strong>. Under <strong>UAA</strong>, click <strong>Link to Credential</strong> next to <strong>Admin Credentials</strong> and record the password.
+<pre class="terminal">
+$ cf login
+API endpoint: <span>https:</span>//api.YOUR-SYSTEM-DOMAIN</p>
+
+<p>Email&gt; admin
+Password&gt;
+Authenticating...
+OK</p></li>
+<li><p>When prompted, target the <code>metrics</code> space.
+<pre class="terminal">
+Targeted org system</p>
+
+<p>Select a space (or press enter to skip):
+<span>1</span>. system
+<span>2</span>. notifications-with-ui
+<span>3</span>. autoscaling
+<span>4</span>. metrics</p>
+
+<p>Space&gt; 4
+Targeted space metrics</p>
+
+<p>API endpoint:   <span>https:</span>//api.YOUR-SYSTEM-DOMAIN (API version: 2.54.0)
+User:           admin
+Org:            system
+Space:          metrics
+</pre></p></li>
+<li><p>Scale your Ingestor app to the desired number of instances:
+<pre class="terminal">$ cf scale metrics-ingestor -i INSTANCE-NUMBER</pre></p></li>
+<li><p>Evaluate the CPU and memory load on your Ingestor instances:
+<pre class="terminal">
+$ cf app metrics-ingestor
+Showing health and status for app metrics-ingestor in org system / space metrics as admin...
+OK
+<br>
+requested state: started
+instances: 1/1
+usage: 1G x 1 instances
+urls: 
+last uploaded: Sat Apr 23 16:11:29 UTC 2016
+stack: cflinuxfs2
+buildpack: binary_buildpack 
+<br><br>
+     state     since                    CPU    memory        disk           details
+<span>#</span>0   running   2016-07-21 03:49:58 PM   2.9%   13.5M of 1G   12.9M of 1G
+</pre></p>
+
+<p>If your average memory usage exceeds 50% or your CPU consistently averages over 85%, add more instances with <code>cf scale metrics-ingestor -i INSTANCE-NUMBER</code>.
+<br><br>
+In general, you should scale the Ingestor app by adding additional instances. However, you can also scale the Ingestor app by increasing the amount of memory per instance:</p>
+
+<pre class="terminal">$ cf scale metrics-ingestor -m NEW-MEMORY-LIMIT</pre>
+
+<p>For more information about scaling app instances, see the <a href="http://docs.pivotal.io/pivotalcf/devguide/deploy-apps/cf-scale.html">Scaling an Application Using cf scale</a> topic.</p></li>
+</ol>
+
+<h2><a id='logqueue'></a> Configuring the Logqueues</h2>
+
+<p>PCF Metrics deploys a MySQL Logqueue and an Elasticsearch Logqueue as apps within PCF. The MySQL logqueue consumes metrics from the Ingestor and forwards them to MySQL. The Elasticsearch logqueue consumes logs from the Ingestor and forwards them to Elasticsearch. To customize PCF Metrics for high capacity, you can scale the number of Logqueue app instances and increase the amount of memory per instance.</p>
+
+<h3><a id='logqueue-considerations'></a> Considerations for Scaling</h3>
+
+<p>The number of MySQL and Elasticsearch logqueues needed is dependent on the frequency of logs and metrics being forwarded by the Ingestor. As a general rule, for every 45,000 logs per minute, add 2 Elasticsearch logqueues. For every 17,000 metrics per minute, add 1 MySQL Logqueue. This is a general estimate and you may need fewer instances depending on your deployment. To optimize resource allocation, provision fewer instances initially and increase instances until you achieve desired performance.</p>
+
+<h3><a id='logqueue-procedures'></a> Procedures for Scaling</h3>
+
+<p>To modify your Elasticsearch Logqueue app instances, you must first target your Cloud Controller, log in with your UAA administrator credentials, and target the <code>metrics</code> space by following steps 1-3 in the <a href="#ingestor-procedures">previous section</a>.</p>
+
+<p>To scale your Logqueue app instances, perform the following command:
+<pre class="terminal">$ cf scale elasticsearch-logqueue -i INSTANCE-NUMBER</pre></p>
+
+<p>To scale the memory limit per Logqueue app instance, perform the following command:
+<pre class="terminal">$ cf scale elasticsearch-logqueue -m NEW-MEMORY-LIMIT</pre></p>
+
+<p>To modify your MySQL Logqueue app instances, you must first target your Cloud Controller, log in with your UAA administrator credentials, and target the <code>metrics</code> space by following steps 1-3 in the <a href="#ingestor-procedures">previous section</a>.</p>
+
+<p>To scale your Logqueue app instances, perform the following command:
+<pre class="terminal">$ cf scale mysql-logqueue -i INSTANCE-NUMBER</pre></p>
+
+<p>To scale the memory limit per Logqueue app instance, perform the following command:
+<pre class="terminal">$ cf scale mysql-logqueue -m NEW-MEMORY-LIMIT</pre></p>
+
+<p class="note warning">
+<strong>WARNING: </strong> If you decrease the number of Logqueue instances, you may lose data currently being processed on the instances you eliminate.</p>
+
+        <div><a id='repo-link' href='http://github.com/pivotal-cf/docs-metrics/tree/1.3/sizing.html.md.erb'>View the source for this page in GitHub</a></div>
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    <div class="copyright">
+  <a href='https://pivotal.io/privacy-policy'>Privacy Policy</a> | 
+  <a href='https://pivotal.io/terms-of-use'>Terms of Use</a><br/>
+  <a href='/'>Pivotal Documentation</a>
+  &copy; 2017 <a href='https://pivotal.io'>Pivotal Software</a>, Inc. All Rights Reserved.
+</div>
+<div class="support">
+  Need help? <a href="http://support.pivotal.io" target="_blank">Visit Support</a>
+</div>
+
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

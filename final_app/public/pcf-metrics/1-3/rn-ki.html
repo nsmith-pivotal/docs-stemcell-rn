@@ -1,0 +1,448 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      PCF Metrics Release Notes and Known Issues |
+    Pivotal Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+<script type="text/javascript">
+  if (window.location.host === 'docs.pivotal.io') {
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39702075-1']);
+    _gaq.push(['_setDomainName', 'pivotal.io']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+    })();
+  }
+</script>
+
+<script type="text/javascript">
+  var blackList = ['acceptance'];
+
+  blackList.forEach(function(blackListedEnv) {
+    if (document.URL.indexOf(blackListedEnv) > -1 && blackListedEnv != "") {
+      $('head').append('<meta name="hashtag" content="PivotalMoment">');
+    }
+  });
+</script>
+
+<!-- CrazyEgg Tracking Script -->
+  <script type="text/javascript">
+  setTimeout(function(){var a=document.createElement("script");
+  var b=document.getElementsByTagName("script")[0];
+  a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0055/2990.js?"+Math.floor(new Date().getTime()/3600000);
+  a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+  </script>
+
+<!-- Munchkin Marketo Script -->
+<script type="text/javascript">
+  (function() {
+    var didInit = false;
+
+    function initMunchkin() {
+      if (didInit === false) {
+        didInit = true;
+        Munchkin.init('625-IUJ-009');
+      }
+    }
+
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = document.location.protocol + '//munchkin.marketo.net/munchkin.js';
+    s.onreadystatechange = function() {
+      if (this.readyState == 'complete' || this.readyState == 'loaded') {
+        initMunchkin();
+      }
+    };
+    s.onload = initMunchkin;
+    document.getElementsByTagName('head')[0].appendChild(s);
+  })();
+</script>
+
+</head>
+
+<body class="pcf-metrics pcf-metrics_1-3 pcf-metrics_1-3_rn-ki has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "pivotal.io";
+    </script>
+
+      <header class="global-header header header-layout js-bar-links">
+    <a class="pivotal-logo" href="/">
+    </a>
+    <a href="/" class="global-header-title">
+      <span class="title-deemph">Pivotal</span> Documentation
+    </a>
+    <div class="btn-menu" data-behavior="MenuMobile"></div>
+    <div class="header-links">
+      <div class="header-item">
+        <a href="https://network.pivotal.io/">Downloads</a>
+      </div>
+      <div class="header-item">
+        <a href="http://support.pivotal.io" target="_blank">Support</a>
+      </div>
+
+      <div class="header-item embedded-searchbar">
+          <form method="get" action="/search">
+            <input name="q" placeholder="Search PCF Metrics 1.3" class="search-box" />
+              <input type="hidden" name="product_name" value="PCF Metrics" />
+              <input type="hidden" name="product_version" value="1.3"/>
+          </form>
+      </div>
+      
+    </div>
+  </header>
+
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a id='home-nav-link' href="/pcf-metrics/1-3/index.html">Pivotal Cloud Foundry Metrics</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-3/installing.html">Installing PCF Metrics</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-3/sizing.html">Sizing PCF Metrics for Your System</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-3/using.html">Monitoring and Troubleshooting Apps with PCF Metrics</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-3/troubleshooting.html">Troubleshooting PCF Metrics</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-3/architecture.html">PCF Metrics Product Architecture</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-3/rn-ki.html">Release Notes and Known Issues</a>
+      </li>
+
+    </ul>
+  </div>
+</div><!--end of sub-nav-->
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+          <div class="local-header title-container">
+    <div class="local-header version-info">
+      LATEST VERSION: 1.4 - <a href="">CHANGELOG</a>
+    </div>
+    <div class="local-header local-title clearfix">
+      <img src="/images/cloud_rings.png">
+      <span class="local-header-title">PCF Metrics
+      </span>
+      <span class="local-header local-version header-dropdown">
+        <a class="local-header header-dropdown-link">v1.3</a>
+        <span class="local-header header-dropdown-content">
+          <ul>
+                <li>
+                    <a href="http://docs.pivotal.io/pcf-metrics/1-4/rn-ki.html">v1.4</a>
+                </li>
+                <li>
+                    <a href="http://docs.pivotal.io/pcf-metrics/1-2/rn-ki.html">v1.2</a>
+                </li>
+                <li>
+                    <a href="http://docs.pivotal.io/pcf-metrics/1-1/rn-ki.html">v1.1</a>
+                </li>
+                <li>
+                    <a href="http://docs.pivotal.io/pcf-metrics/1-0/rn-ki.html">v1.0</a>
+                </li>
+          </ul>
+        </span>
+      </span>
+
+      <!-- search was here -->
+    </div>
+    <div class="local-header local-header-links">
+    </div>
+  </div>
+
+          <h1 class="title-container" >
+    PCF Metrics Release Notes and Known Issues
+  </h1>
+
+          <div id="js-quick-links" >
+            <div class="quick-links"><ul>
+<li>
+<a href="#138">v1.3.8</a><ul><li><a href="#notes">Notes</a></li></ul>
+</li>
+<li>
+<a href="#137">v1.3.7</a><ul><li><a href="#notes">Notes</a></li></ul>
+</li>
+<li>
+<a href="#136">v1.3.6</a><ul>
+<li><a href="#notes">Notes</a></li>
+<li><a href="#issues">Known Issues</a></li>
+</ul>
+</li>
+<li>
+<a href="#135">v1.3.5</a><ul>
+<li><a href="#notes">Notes</a></li>
+<li><a href="#issues">Known Issues</a></li>
+</ul>
+</li>
+<li>
+<a href="#134">v1.3.4</a><ul>
+<li><a href="#notes">Notes</a></li>
+<li><a href="#issues">Known Issues</a></li>
+</ul>
+</li>
+<li>
+<a href="#133">v1.3.3</a><ul>
+<li><a href="#notes">Notes</a></li>
+<li><a href="#issues">Known Issues</a></li>
+</ul>
+</li>
+<li>
+<a href="#130">v1.3.0</a><ul>
+<li><a href="#notes">Notes</a></li>
+<li><a href="#issues">Known Issues</a></li>
+</ul>
+</li>
+<li><a href="#12x">Past Minor v1.2.x</a></li>
+<li><a href="#11x">Past Minor v1.1.x</a></li>
+<li><a href="#10x">Past Minor v1.0.x</a></li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <p>This topic contains release notes for Pivotal Cloud Foundry (PCF) Metrics.</p>
+
+<h2><a id='138'></a>v1.3.8</h2>
+
+<p><strong>Release Date: August 25, 2017</strong></p>
+
+<h3><a id="notes"></a>Notes</h3>
+
+<p>The following list describes what&rsquo;s new in PCF Metrics v1.3.8:</p>
+
+<ul>
+<li><strong>Bug Fix in Push PCF Metrics Components Errand</strong>: PCF Metrics v1.3.8 fixes a bug in the Push PCF Metrics Components Errand that emitted too many logs and fails if run on an old BOSH Director.</li>
+</ul>
+
+<h2><a id='137'></a>v1.3.7</h2>
+
+<p><strong>Release Date: June 19, 2017</strong></p>
+
+<h3><a id="notes"></a>Notes</h3>
+
+<p>The following list describes what&rsquo;s new in PCF Metrics v1.3.7:</p>
+
+<ul>
+<li><strong>Running Errands by Default</strong>: Push apps errand in PCF Metrics tile now defaults to always run, which fixes the bug where stemcell upgrades caused Elasticsearch to go into an unhealthy state.</li>
+</ul>
+
+<h2><a id='136'></a>v1.3.6</h2>
+
+<p><strong>Release Date: June 2, 2017</strong></p>
+
+<h3><a id="notes"></a>Notes</h3>
+
+<p>The following list describes what&rsquo;s new in PCF Metrics v1.3.6:</p>
+
+<ul>
+<li><strong>Intermediate Certs</strong>: PCF Metrics v1.3.6 includes a bug fix that allows deployments to use certificates signed by intermediate certificate authorities.</li>
+<li><strong>Stemcell Bump</strong>: Major stemcell version bump from 3263.x to 3363.x.</li>
+</ul>
+
+<h3><a id="issues"></a>Known Issues</h3>
+
+<p>See the Known Issues section for the previous release.</p>
+
+<h2><a id='135'></a>v1.3.5</h2>
+
+<p><strong>Release Date: May 9, 2017</strong></p>
+
+<h3><a id="notes"></a>Notes</h3>
+
+<p>The following list describes what&rsquo;s new in PCF Metrics v1.3.5:</p>
+
+<ul>
+<li><strong>Reduced Elasticsearch VM Footprint</strong>: PCF Metrics v1.3.5 removes extraneous Elasticsearch VMs, greatly reducing the resource cost of the tile. </li>
+<li><strong>Simplified Tile Installation</strong>: Several fields in the tile config on Ops Manager have been removed to simplify the tile installation process.</li>
+<li><strong>Bug Fixes</strong>: Users can now download logs when there is a filter applied.</li>
+</ul>
+
+<h3><a id="issues"></a>Known Issues</h3>
+
+<p>See the Known Issues section for the previous release.</p>
+
+<h2><a id='134'></a>v1.3.4</h2>
+
+<p><strong>Release Date: April 24, 2017</strong></p>
+
+<h3><a id="notes"></a>Notes</h3>
+
+<p>The following list describes what&rsquo;s new in PCF Metrics v1.3.4:</p>
+
+<ul>
+<li><strong>Dependency Graphs and Span ID Filtering</strong>: PCF Metrics v1.3.4 re-enables dependency graphs and span id filtering on the trace explorer page. 
+<p class="note"><strong>Note</strong>: For the dependency graph and span id filtering to work correctly, you must have a version of ERT that is v1.9.16+, v1.10.3+, or v1.11.0+.</p><br></li>
+<li><strong>Compatibility with Azure/OpenStack</strong>: This version of PCF Metrics can be successfully installed on Azure and OpenStack.</li>
+</ul>
+
+<h3><a id="issues"></a>Known Issues</h3>
+
+<p>See the Known Issues section for the previous release.</p>
+
+<h2><a id='133'></a>v1.3.3</h2>
+
+<p><strong>Release Date: April 12, 2017</strong></p>
+
+<h3><a id="notes"></a>Notes</h3>
+
+<p>The following list describes what&rsquo;s new in PCF Metrics v1.3.3:</p>
+
+<ul>
+<li><strong>Internetless Installations</strong>: PCF Metrics v1.3.3 removes multiple unnecessary dependencies that prevented the tile from being installed in an internetless environment.</li>
+<li><strong>Reduced MySQL Disk Usage</strong>: Raw data in MySQL is now pruned after 2 days, greatly reducing the amount of disk space required to store metrics in MySQL.</li>
+<li><strong>Metrics Homepage Loads Faster</strong>: Loading apps onto Metrics homepage is now cached. Subsequent loads of homepage should be considerably faster.</li>
+<li><strong>Bug Fixes:</strong> Fixed stability issues and UI tweaks.</li>
+</ul>
+
+<h3><a id="issues"></a>Known Issues</h3>
+
+<p>See the Known Issues section for the previous release.</p>
+
+<h2><a id='130'></a>v1.3.0</h2>
+
+<p><strong>Release Date: February 23, 2017</strong></p>
+
+<h3><a id="notes"></a>Notes</h3>
+
+<p>The following list describes what&rsquo;s new in PCF Metrics v1.3.0:</p>
+
+<ul>
+<li><strong>Reduced Log Loss During Upgrades</strong>: PCF Metrics uses a temporary datastore during Elasticsearch downtime, including upgrades, to significantly reduce log loss by continuing to store app logs from the Loggregator Firehose. The temporary datastore is a new Redis component deployed with PCF Metrics that operators must size according to the needs of their system. See <a href="/pcf-metrics/1-3/sizing.html#temp-datastore">Configuring the Temporary Datastore</a> for more information.
+<p class="note"><strong>Note</strong>: PCF Metrics only uses the temporary datastore when upgrading from v1.3 or later.</p> </li>
+<li><strong>The Trace Explorer</strong>: PCF Metrics provides an interactive graph that allows you to trace requests as they flow through your apps and their endpoints, along with the corresponding logs. See the <a href="/pcf-metrics/1-3/using.html#trace">Trace App Requests</a> section of <em>Monitoring and Troubleshooting Apps with PCF Metrics</em>.</li>
+<li><strong>Improved UI</strong>: PCF Metrics v1.3.0 includes several UI enhancements such as a new time selector and an improved UX for collapsing and expanding which views you are interested in. To view the UI and understand the new functionality, see <a href="/pcf-metrics/1-3/using.html">Monitoring and Troubleshooting Apps with PCF Metrics</a>.</li>
+<li><strong>Events</strong>: The <strong>Events</strong> graph now includes the following events:
+
+<ul>
+<li><strong>SSH</strong>: This event corresponds to someone successfully using SSH to access a container that runs an instance of the app.</li>
+<li><strong>STG Fail</strong>: This event corresponds to your app failing to stage in PCF.</li>
+</ul></li>
+</ul>
+
+<h3><a id="issues"></a>Known Issues</h3>
+
+<p>The following sections describe the known issues in PCF Metrics v1.3.0</p>
+
+<h4>Compatibility with Elastic Runtime</h4>
+
+<p>PCF Metrics v1.3.x requires a version of Elastic Runtime between v1.9.0 and v1.11.x.</p>
+
+<h4>Installing Metrics on Azure/OpenStack</h4>
+
+<p>PCF Metrics v1.3.0 and v1.3.3 will not install correctly if you have ERT v1.10.x installed on Azure or OpenStack. Upgrade to v1.3.4 if you wish to use PCF Metrics with ERT v1.10.x on either of these.</p>
+
+<h4>Metrics and Log Loss when Upgrading from v1.2 to v1.3</h4>
+
+<p>The upgrade process from v1.2 to v1.3 acts in the following sequence:</p>
+
+<ol>
+<li>Removes the data storage components of v1.2</li>
+<li>Deploys v1.3 data storage and ingestion components</li>
+</ol>
+
+<p>The upgrade process does not save any v1.2 data and the new components do not begin ingesting and storing log or metrics data until they successfully deploy.</p>
+
+<h4>Smoke Test Failure</h4>
+
+<p>The PCF Metrics <strong>Smoke Test</strong> errand may fail if your deployment authenticates user sign-ons with an external SAML identity provider or an external LDAP server. In some cases, these external user stores have an additional login procedure that prevents the errand from authenticating with the deployment and validating against the Metrics API.</p>
+
+<p>If you experience this issue, disable the <strong>Smoke Test</strong> errand in the PCF Metrics tile and click <strong>Apply Changes</strong> to run the install again.</p>
+
+<p>See the <a href="http://docs.pivotal.io/pivotalcf/customizing/config-er-vmware.html#er-auth-config">Configure Authentication and Enterprise SSO</a> section of the <em>Configuring Elastic Runtime</em> topic for more information on what configurations can lead to this failure.</p>
+
+<h4>For Operators who Deploy PCF Metrics using BOSH</h4>
+
+<p>If both of the following are true, you may experience issues while using PCF Metrics:</p>
+
+<ul>
+<li>You deploy PCF Metrics using BOSH instead of using the PCF Metrics tile in Ops Manager.</li>
+<li>You use self-signed certificates.</li>
+</ul>
+
+<p>Pivotal recommends using certificates issued by a Certificate Authority for BOSH deployments of this product.</p>
+
+<h2><a id="12x"></a>Past Minor v1.2.x</h2>
+
+<p>Release Notes for v1.1.x releases can be found <a href="http://docs.pivotal.io/pcf-metrics/1-2/rn-ki.html">here</a>.</p>
+
+<h2><a id="11x"></a>Past Minor v1.1.x</h2>
+
+<p>Release Notes for v1.1.x releases can be found <a href="http://docs.pivotal.io/pcf-metrics/1-1/rn-ki.html">here</a>.</p>
+
+<h2><a id="10x"></a>Past Minor v1.0.x</h2>
+
+<p>Release Notes for v1.0.x releases can be found <a href="http://docs.pivotal.io/pcf-metrics/1-0/rn-ki.html">here</a>.</p>
+
+        <div><a id='repo-link' href='http://github.com/pivotal-cf/docs-metrics/tree/1.3/rn-ki.html.md.erb'>View the source for this page in GitHub</a></div>
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    <div class="copyright">
+  <a href='https://pivotal.io/privacy-policy'>Privacy Policy</a> | 
+  <a href='https://pivotal.io/terms-of-use'>Terms of Use</a><br/>
+  <a href='/'>Pivotal Documentation</a>
+  &copy; 2017 <a href='https://pivotal.io'>Pivotal Software</a>, Inc. All Rights Reserved.
+</div>
+<div class="support">
+  Need help? <a href="http://support.pivotal.io" target="_blank">Visit Support</a>
+</div>
+
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

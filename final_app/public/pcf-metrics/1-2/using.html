@@ -1,0 +1,333 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      Using PCF Metrics |
+    Pivotal Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+<script type="text/javascript">
+  if (window.location.host === 'docs.pivotal.io') {
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39702075-1']);
+    _gaq.push(['_setDomainName', 'pivotal.io']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+    })();
+  }
+</script>
+
+<script type="text/javascript">
+  var blackList = ['acceptance'];
+
+  blackList.forEach(function(blackListedEnv) {
+    if (document.URL.indexOf(blackListedEnv) > -1 && blackListedEnv != "") {
+      $('head').append('<meta name="hashtag" content="PivotalMoment">');
+    }
+  });
+</script>
+
+<!-- CrazyEgg Tracking Script -->
+  <script type="text/javascript">
+  setTimeout(function(){var a=document.createElement("script");
+  var b=document.getElementsByTagName("script")[0];
+  a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0055/2990.js?"+Math.floor(new Date().getTime()/3600000);
+  a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+  </script>
+
+<!-- Munchkin Marketo Script -->
+<script type="text/javascript">
+  (function() {
+    var didInit = false;
+
+    function initMunchkin() {
+      if (didInit === false) {
+        didInit = true;
+        Munchkin.init('625-IUJ-009');
+      }
+    }
+
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = document.location.protocol + '//munchkin.marketo.net/munchkin.js';
+    s.onreadystatechange = function() {
+      if (this.readyState == 'complete' || this.readyState == 'loaded') {
+        initMunchkin();
+      }
+    };
+    s.onload = initMunchkin;
+    document.getElementsByTagName('head')[0].appendChild(s);
+  })();
+</script>
+
+</head>
+
+<body class="pcf-metrics pcf-metrics_1-2 pcf-metrics_1-2_using has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "pivotal.io";
+    </script>
+
+      <header class="global-header header header-layout js-bar-links">
+    <a class="pivotal-logo" href="/">
+    </a>
+    <a href="/" class="global-header-title">
+      <span class="title-deemph">Pivotal</span> Documentation
+    </a>
+    <div class="btn-menu" data-behavior="MenuMobile"></div>
+    <div class="header-links">
+      <div class="header-item">
+        <a href="https://network.pivotal.io/">Downloads</a>
+      </div>
+      <div class="header-item">
+        <a href="http://support.pivotal.io" target="_blank">Support</a>
+      </div>
+
+      <div class="header-item embedded-searchbar">
+          <form method="get" action="/search">
+            <input name="q" placeholder="Search PCF Metrics 1.2" class="search-box" />
+              <input type="hidden" name="product_name" value="PCF Metrics" />
+              <input type="hidden" name="product_version" value="1.2"/>
+          </form>
+      </div>
+      
+    </div>
+  </header>
+
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a id='home-nav-link' href="/pcf-metrics/1-2/index.html">Pivotal Cloud Foundry Metrics</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-2/installing.html">Installing PCF Metrics</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-2/sizing.html">Sizing PCF Metrics for Your System</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-2/using.html">Using PCF Metrics</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-2/troubleshooting.html">Troubleshooting PCF Metrics</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-2/architecture.html">PCF Metrics Product Architecture</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-2/rn-ki.html">Release Notes and Known Issues</a>
+      </li>
+
+    </ul>
+  </div>
+</div><!--end of sub-nav-->
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+          <div class="local-header title-container">
+    <div class="local-header version-info">
+      LATEST VERSION: 1.4 - <a href="">CHANGELOG</a>
+    </div>
+    <div class="local-header local-title clearfix">
+      <img src="/images/cloud_rings.png">
+      <span class="local-header-title">PCF Metrics
+      </span>
+      <span class="local-header local-version header-dropdown">
+        <a class="local-header header-dropdown-link">v1.2</a>
+        <span class="local-header header-dropdown-content">
+          <ul>
+                <li>
+                    <a href="http://docs.pivotal.io/pcf-metrics/1-4/using.html">v1.4</a>
+                </li>
+                <li>
+                    <a href="http://docs.pivotal.io/pcf-metrics/1-3/using.html">v1.3</a>
+                </li>
+                <li>
+                    <a href="http://docs.pivotal.io/pcf-metrics/1-1/using.html">v1.1</a>
+                </li>
+                <li>
+                    <a href="http://docs.pivotal.io/pcf-metrics/1-0/using.html">v1.0</a>
+                </li>
+          </ul>
+        </span>
+      </span>
+
+      <!-- search was here -->
+    </div>
+    <div class="local-header local-header-links">
+    </div>
+  </div>
+
+          <h1 class="title-container" >
+    Using PCF Metrics
+  </h1>
+
+          <div id="js-quick-links" >
+            <div class="quick-links"><ul>
+<li>
+<a href="#get-started">View an App in PCF Metrics</a><ul>
+<li><a href="#toggle">Toggle the Data Views</a></li>
+<li><a href="#time">Change the Time Frame</a></li>
+</ul>
+</li>
+<li>
+<a href="#metrics">Interpret Metrics</a><ul>
+<li><a href="#container">Container Metrics</a></li>
+<li><a href="#network">Network Metrics</a></li>
+<li><a href="#events">Events</a></li>
+<li><a href="#logs">Logs</a></li>
+</ul>
+</li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <p>This topic describes how to log in to, use, and interpret data from Pivotal Cloud Foundry (PCF) Metrics. </p>
+
+<h2><a id='get-started'></a> View an App in PCF Metrics</h2>
+
+<p>In a browser, navigate to <code>metrics.YOUR-SYSTEM-DOMAIN</code> and log in with your User Account and Authentication (UAA) credentials. Choose an app for which you want to view metrics. You can view any app for which you are a Space Developer.</p>
+
+<p><img alt="Search for an app" src="images/search.png" /></p>
+
+<p>PCF Metrics provides you with a graphical representation of application data for a given time frame, along with the corresponding application logs. See the sections below to <a href="#toggle">Toggle the Data Views</a> and <a href="#time">Change the Time Frame</a>. See the <a href="#metrics">Interpret Metrics</a> section for more information on each data view.</p>
+
+<p><img alt="Metrics UI" src="images/full.png" /></p>
+
+<h3><a id="toggle"></a>Toggle the Data Views</h3>
+
+<p>There are four data views: <strong>Container Metrics</strong>, <strong>Network Metrics</strong>, <strong>Logs</strong>, and <strong>Events</strong>. Select which views you want to see using the toggles in the upper left. </p>
+
+<p><img alt="Toggle" src="images/toggle.png" /></p>
+
+<h3><a id="time"></a>Change the Time Frame</h3>
+
+<p>The data views show time along the horizontal axis. You can change the time frame for all the data views by using the dropdown at the top of the page. Use the refresh button to update all views with the most current data. </p>
+
+<p><img alt="time" src="images/metrics-time.png" /></p>
+
+<p><strong>Zoom</strong>: From within any data view, you can also zoom in on areas of interest by clicking and dragging within the graph. This adjusts all of the views, including <strong>Logs</strong>, to show data from that time period.</p>
+
+<p><img src="images/metric-zoom.png" /></p>
+
+<p><strong>Drag</strong>: From underneath the x-axis of any data view, you can drag left or right to view data for an earlier or later time. </p>
+
+<h2><a id='metrics'></a> Interpret Metrics</h2>
+
+<p>PCF Metrics displays the following data. You can hover over each view to see data for a specific time. </p>
+
+<h3><a id='container'></a> Container Metrics</h3>
+
+<p>The <strong>Container Metrics</strong> view displays <strong>CPU</strong>, <strong>Memory</strong>, and <strong>Disk</strong> usage:</p>
+
+<p><img alt="Container View" src="images/container.png" /></p>
+
+<ul>
+<li>A spike in <strong>CPU</strong> might point to a process that is computationally heavy. Scaling app instances can relieve the immediate pressure, but investigate the app to better understand and fix the root cause. </li>
+<li>A spike in <strong>Memory</strong> might mean a resource leak in the code. Scaling app memory can also relieve the immediate pressure, but look for and resolve the underlying issue so that it does not occur again. </li>
+<li>A spike in <strong>Disk</strong> might mean the app is writing logs to files instead of STDOUT, caching data to local disk, or serializing huge sessions to disk. </li>
+</ul>
+
+<h3><a id='network'></a> Network Metrics</h3>
+
+<p>The <strong>Network Metric</strong> view displays HTTP <strong>Requests &amp; Errors</strong> and <strong>Latency</strong>:</p>
+
+<p><img alt="Network View" src="images/network.png" /></p>
+
+<ul>
+<li>A spike in HTTP <strong>Requests</strong> means more users are using your app. Scaling app instances can reduce the higher latency that may result.</li>
+<li>A spike in HTTP <strong>Errors</strong> means one or more 5xx errors have occurred. Check your app logs for more information. </li>
+<li>A spike in <strong>Latency</strong> means your users are waiting longer to use your app. Scaling app instances can spread that workload over more resources and result in faster response times. </li>
+</ul>
+
+<h3><a id='events'></a> Events</h3>
+
+<p>The <strong>Events</strong> view shows the following app events: <strong>Create</strong>, <strong>Update</strong>, <strong>Start</strong>, <strong>Stop</strong>, and <strong>Crash</strong>. You can change which events you see using the checkboxes in the upper right. </p>
+
+<p><img alt="Events" src="images/events.png" /></p>
+
+<p>See the <a href="http://docs.pivotal.io/pivotalcf/devguide/deploy-apps/app-startup.html">About Starting Applications</a> and <a href="http://docs.pivotal.io/pivotalcf/devguide/deploy-apps/troubleshoot-app-health.html">Troubleshooting Application Deployment and Health</a> topics for more information about app events. </p>
+
+<h3><a id="logs"></a>Logs</h3>
+
+<p>Logs displays application log data ingested from the <a href="http://docs.pivotal.io/pivotalcf/1-8/loggregator/architecture.html#firehose">firehose</a>.  See the <a href="http://docs.pivotal.io/pivotalcf/1-8/devguide/deploy-apps/streaming-logs.html">Application Logging in Cloud Foundry</a> topic for more information.</p>
+
+<p><img alt="Logs" src="images/logs.png" /></p>
+
+<p>PCF Metrics lists all logs by default, and the histogram displays log frequency for the current time frame. You can refine the list and histogram with the following: </p>
+
+<ul>
+<li><strong>Filter</strong>: Perform a keyword search. The histogram updates with blue bars based on the filter. Hover over a histogram bar to view the amount of logs for a specific time based on your filter. </li>
+<li><strong>Highlight</strong>: Enter a term to highlight within your search. The histogram updates with yellow bars based on the results. Hover over a histogram bar to view the amount of logs for a specific time that contain the highlighted term. </li>
+<li><strong>Sources</strong>: Choose which sources to display logs from. </li>
+<li><strong>Order</strong>: Modify the order in which logs appear. </li>
+</ul>
+
+<p>You can also click the <strong>Download</strong> button to download a file containing logs for the current search. </p>
+
+        <div><a id='repo-link' href='http://github.com/pivotal-cf/docs-metrics/tree/1.2/using.html.md.erb'>View the source for this page in GitHub</a></div>
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    <div class="copyright">
+  <a href='https://pivotal.io/privacy-policy'>Privacy Policy</a> | 
+  <a href='https://pivotal.io/terms-of-use'>Terms of Use</a><br/>
+  <a href='/'>Pivotal Documentation</a>
+  &copy; 2017 <a href='https://pivotal.io'>Pivotal Software</a>, Inc. All Rights Reserved.
+</div>
+<div class="support">
+  Need help? <a href="http://support.pivotal.io" target="_blank">Visit Support</a>
+</div>
+
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

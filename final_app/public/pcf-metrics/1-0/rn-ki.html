@@ -1,0 +1,593 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      PCF Metrics Release Notes and Known Issues |
+    Pivotal Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+<script type="text/javascript">
+  if (window.location.host === 'docs.pivotal.io') {
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39702075-1']);
+    _gaq.push(['_setDomainName', 'pivotal.io']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+    })();
+  }
+</script>
+
+<script type="text/javascript">
+  var blackList = ['acceptance'];
+
+  blackList.forEach(function(blackListedEnv) {
+    if (document.URL.indexOf(blackListedEnv) > -1 && blackListedEnv != "") {
+      $('head').append('<meta name="hashtag" content="PivotalMoment">');
+    }
+  });
+</script>
+
+<!-- CrazyEgg Tracking Script -->
+  <script type="text/javascript">
+  setTimeout(function(){var a=document.createElement("script");
+  var b=document.getElementsByTagName("script")[0];
+  a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0055/2990.js?"+Math.floor(new Date().getTime()/3600000);
+  a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+  </script>
+
+<!-- Munchkin Marketo Script -->
+<script type="text/javascript">
+  (function() {
+    var didInit = false;
+
+    function initMunchkin() {
+      if (didInit === false) {
+        didInit = true;
+        Munchkin.init('625-IUJ-009');
+      }
+    }
+
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = document.location.protocol + '//munchkin.marketo.net/munchkin.js';
+    s.onreadystatechange = function() {
+      if (this.readyState == 'complete' || this.readyState == 'loaded') {
+        initMunchkin();
+      }
+    };
+    s.onload = initMunchkin;
+    document.getElementsByTagName('head')[0].appendChild(s);
+  })();
+</script>
+
+</head>
+
+<body class="pcf-metrics pcf-metrics_1-0 pcf-metrics_1-0_rn-ki has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "pivotal.io";
+    </script>
+
+      <header class="global-header header header-layout js-bar-links">
+    <a class="pivotal-logo" href="/">
+    </a>
+    <a href="/" class="global-header-title">
+      <span class="title-deemph">Pivotal</span> Documentation
+    </a>
+    <div class="btn-menu" data-behavior="MenuMobile"></div>
+    <div class="header-links">
+      <div class="header-item">
+        <a href="https://network.pivotal.io/">Downloads</a>
+      </div>
+      <div class="header-item">
+        <a href="http://support.pivotal.io" target="_blank">Support</a>
+      </div>
+
+      <div class="header-item embedded-searchbar">
+          <form method="get" action="/search">
+            <input name="q" placeholder="Search PCF Metrics 1.0" class="search-box" />
+              <input type="hidden" name="product_name" value="PCF Metrics" />
+              <input type="hidden" name="product_version" value="1.0"/>
+          </form>
+      </div>
+      
+    </div>
+  </header>
+
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a id='home-nav-link' href="/pcf-metrics/1-0/index.html">Pivotal Cloud Foundry Metrics</a>
+      </li>
+      <li>
+        <a id='home-nav-link' href="/pcf-metrics/1-0/installing.html">Installing PCF Metrics</a>
+      </li>
+      <li>
+        <a href="/pcf-metrics/1-0/using.html">Using PCF Metrics</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-0/rn-ki.html">Release Notes and Known Issues</a>
+      </li>
+
+    </ul>
+  </div>
+</div><!--end of sub-nav-->
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+          <div class="local-header title-container">
+    <div class="local-header version-info">
+      LATEST VERSION: 1.4 - <a href="">CHANGELOG</a>
+    </div>
+    <div class="local-header local-title clearfix">
+      <img src="/images/cloud_rings.png">
+      <span class="local-header-title">PCF Metrics
+      </span>
+      <span class="local-header local-version header-dropdown">
+        <a class="local-header header-dropdown-link">v1.0</a>
+        <span class="local-header header-dropdown-content">
+          <ul>
+                <li>
+                    <a href="http://docs.pivotal.io/pcf-metrics/1-4/rn-ki.html">v1.4</a>
+                </li>
+                <li>
+                    <a href="http://docs.pivotal.io/pcf-metrics/1-3/rn-ki.html">v1.3</a>
+                </li>
+                <li>
+                    <a href="http://docs.pivotal.io/pcf-metrics/1-2/rn-ki.html">v1.2</a>
+                </li>
+                <li>
+                    <a href="http://docs.pivotal.io/pcf-metrics/1-1/rn-ki.html">v1.1</a>
+                </li>
+          </ul>
+        </span>
+      </span>
+
+      <!-- search was here -->
+    </div>
+    <div class="local-header local-header-links">
+    </div>
+  </div>
+
+          <h1 class="title-container" >
+    PCF Metrics Release Notes and Known Issues
+  </h1>
+
+          <div id="js-quick-links" >
+            <div class="quick-links"><ul>
+<li><a href="#v1.0.24">Version 1.0.24</a></li>
+<li><a href="#v1.0.23">Version 1.0.23</a></li>
+<li><a href="#v1.0.20">Version 1.0.20</a></li>
+<li><a href="#v1.0.19">Version 1.0.19</a></li>
+<li><a href="#v1.0.18">Version 1.0.18</a></li>
+<li><a href="#v1.0.17">Version 1.0.17</a></li>
+<li><a href="#v1.0.16">Version 1.0.16</a></li>
+<li><a href="#v1.0.15">Version 1.0.15</a></li>
+<li><a href="#v1.0.14">Version 1.0.14</a></li>
+<li><a href="#v1.0.13">Version 1.0.13</a></li>
+<li><a href="#v1.0.11">Version 1.0.11</a></li>
+<li><a href="#v1.0.10">Version 1.0.10</a></li>
+<li><a href="#v1.0.9">Version 1.0.9</a></li>
+<li><a href="#v1.0.8">Version 1.0.8</a></li>
+<li><a href="#v1.0.4">Version 1.0.4</a></li>
+<li><a href="#v1.0.3">Version 1.0.3</a></li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <h2><a id='v1.0.24'></a>Version 1.0.24</h2>
+
+<p><strong>Release Date: February 28, 2017</strong></p>
+
+<h3>Notes</h3>
+
+<ul>
+<li>PCF Metrics 1.0.24 - now with stemcell 3263.20</li>
+</ul>
+
+<h3>Known Issues</h3>
+
+<p>See the Known Issues section for the previous release. </p>
+
+<h2><a id='v1.0.23'></a>Version 1.0.23</h2>
+
+<p><strong>Release Date: January 18, 2017</strong></p>
+
+<h3>Notes</h3>
+
+<ul>
+<li>PCF Metrics 1.0.23 - now with stemcell 3263.17</li>
+</ul>
+
+<h3>Known Issues</h3>
+
+<p>See the Known Issues section for the previous release. </p>
+
+<h2><a id='v1.0.20'></a>Version 1.0.20</h2>
+
+<p><strong>Release Date: December 16, 2016</strong></p>
+
+<h3>Notes</h3>
+
+<ul>
+<li>PCF Metrics 1.0.20 - now with stemcell 3263.14</li>
+</ul>
+
+<h3>Known Issues</h3>
+
+<p>See the Known Issues section for the previous release. </p>
+
+<h2><a id='v1.0.19'></a>Version 1.0.19</h2>
+
+<p><strong>Release Date: December 8, 2016</strong></p>
+
+<h3>Notes</h3>
+
+<ul>
+<li>PCF Metrics 1.0.19 - now with stemcell 3263.12</li>
+</ul>
+
+<h3>Known Issues</h3>
+
+<p>See the Known Issues section for the previous release. </p>
+
+<h2><a id='v1.0.18'></a>Version 1.0.18</h2>
+
+<p><strong>Release Date: November 15, 2016</strong></p>
+
+<h3>Notes</h3>
+
+<ul>
+<li>PCF Metrics 1.0.18 - now with stemcell 3263.8</li>
+</ul>
+
+<h3>Known issues</h3>
+
+<ul>
+<li>For applications that do not have any activity in the past 24 hours, meaning no app events or HTTP requests have been generated, users do not see any data in the UI. They must also refresh their browser after metrics are generated by the use of the app.</li>
+<li>When installing the PCF Metrics tile, the default Resource Config settings for each resource pool may be over-sized for POC/Beta purposes. Adjust them manually to fit your specific environment. </li>
+<li>All v1.0.x tiles - if the apps dropdown is grayed out
+
+<ul>
+<li>Because of an earlier CLI bug, some PCF metrics apps are missing system org guid during tile upgrade/uninstall process which crashes PCF Metrics UI and makes the apps dropdown inaccessible. This is fixed in the 1.1 Metrics tile. A work around for this to remove the user&rsquo;s access to system org using CLI.</li>
+</ul></li>
+<li>All v1.0.x tiles - if some apps are not accessible from the dropdown even though they are accessible in apps manager
+
+<ul>
+<li>If you have apps manager/console admin privilege, you may be able to see apps in apps manager without having space developer role privilege to the spaces in which those apps reside. Metrics however follows permissions directly form cloud controller so if you have cloud.controller.admin privilege, you can see all apps in all spaces in all orgs in PCF Metrics UI. If you have space developer privilege to certain spaces then you can only see the apps in those spaces in PCF Metrics UI.<br></li>
+</ul></li>
+<li>All v1.0.x tiles - SSO authentication is not supported. This feature is added in the 1.1 Metrics tile.</li>
+</ul>
+
+<h2><a id='v1.0.17'></a>Version 1.0.17</h2>
+
+<p><strong>Release Date: October 25, 2016</strong></p>
+
+<h3>Notes</h3>
+
+<ul>
+<li>PCF Metrics 1.0.17 - now with stemcell 3233.4</li>
+</ul>
+
+<h3>Known issues</h3>
+
+<ul>
+<li>For applications that do not have any activity in the past 24 hours, meaning no app events or HTTP requests have been generated, users do not see any data in the UI. They must also refresh their browser after metrics are generated by the use of the app.</li>
+<li>When installing the PCF Metrics tile, the default Resource Config settings for each resource pool may be over-sized for POC/Beta purposes. Adjust them manually to fit your specific environment. </li>
+<li>All v1.0.x tiles - if the apps dropdown is grayed out
+
+<ul>
+<li>Because of an earlier CLI bug, some PCF metrics apps are missing system org guid during tile upgrade/uninstall process which crashes PCF Metrics UI and makes the apps dropdown inaccessible. This is fixed in the 1.1 Metrics tile. A work around for this to remove the user&rsquo;s access to system org using CLI.</li>
+</ul></li>
+<li>All v1.0.x tiles - if some apps are not accessible from the dropdown even though they are accessible in apps manager
+
+<ul>
+<li>If you have apps manager/console admin privilege, you may be able to see apps in apps manager without having space developer role privilege to the spaces in which those apps reside. Metrics however follows permissions directly form cloud controller so if you have cloud.controller.admin privilege, you can see all apps in all spaces in all orgs in PCF Metrics UI. If you have space developer privilege to certain spaces then you can only see the apps in those spaces in PCF Metrics UI.<br></li>
+</ul></li>
+<li>All v1.0.x tiles - SSO authentication is not supported. This feature is added in the 1.1 Metrics tile.</li>
+</ul>
+
+<h2><a id='v1.0.16'></a>Version 1.0.16</h2>
+
+<p><strong>Release Date: October 12, 2016</strong></p>
+
+<h3>Notes</h3>
+
+<ul>
+<li>PCF Metrics 1.0.16 - now with stemcell 3233.2</li>
+</ul>
+
+<h3>Known issues</h3>
+
+<ul>
+<li>For applications that do not have any activity in the past 24 hours, meaning no app events or HTTP requests have been generated, users do not see any data in the UI. They must also refresh their browser after metrics are generated by the use of the app.</li>
+<li>When installing the PCF Metrics tile, the default Resource Config settings for each resource pool may be over-sized for POC/Beta purposes. Adjust them manually to fit your specific environment. </li>
+<li>All v1.0.x tiles - if the apps dropdown is grayed out
+
+<ul>
+<li>Because of an earlier CLI bug, some PCF metrics apps are missing system org guid during tile upgrade/uninstall process which crashes PCF Metrics UI and makes the apps dropdown inaccessible. This is fixed in the 1.1 Metrics tile. A work around for this to remove the user&rsquo;s access to system org using CLI.</li>
+</ul></li>
+<li>All v1.0.x tiles - if some apps are not accessible from the dropdown even though they are accessible in apps manager
+
+<ul>
+<li>If you have apps manager/console admin privilege, you may be able to see apps in apps manager without having space developer role privilege to the spaces in which those apps reside. Metrics however follows permissions directly form cloud controller so if you have cloud.controller.admin privilege, you can see all apps in all spaces in all orgs in PCF Metrics UI. If you have space developer privilege to certain spaces then you can only see the apps in those spaces in PCF Metrics UI.<br></li>
+</ul></li>
+<li>All v1.0.x tiles - SSO authentication is not supported. This feature is added in the 1.1 Metrics tile.</li>
+</ul>
+
+<h2><a id='v1.0.15'></a>Version 1.0.15</h2>
+
+<p><strong>Release Date: October 4, 2016</strong></p>
+
+<h3>Notes</h3>
+
+<ul>
+<li>PCF Metrics 1.0.15 - now with stemcell 3233.1</li>
+</ul>
+
+<h3>Known issues</h3>
+
+<ul>
+<li>For applications that do not have any activity in the past 24 hours, meaning no app events or HTTP requests have been generated, users do not see any data in the UI. They must also refresh their browser after metrics are generated by the use of the app.</li>
+<li>When installing the PCF Metrics tile, the default Resource Config settings for each resource pool may be over-sized for POC/Beta purposes. Adjust them manually to fit your specific environment. </li>
+<li>All v1.0.x tiles - if the apps dropdown is grayed out
+
+<ul>
+<li>Because of an earlier CLI bug, some PCF metrics apps are missing system org guid during tile upgrade/uninstall process which crashes PCF Metrics UI and makes the apps dropdown inaccessible. This is fixed in the 1.1 Metrics tile. A work around for this to remove the user&rsquo;s access to system org using CLI.</li>
+</ul></li>
+<li>All v1.0.x tiles - if some apps are not accessible from the dropdown even though they are accessible in apps manager
+
+<ul>
+<li>If you have apps manager/console admin privilege, you may be able to see apps in apps manager without having space developer role privilege to the spaces in which those apps reside. Metrics however follows permissions directly form cloud controller so if you have cloud.controller.admin privilege, you can see all apps in all spaces in all orgs in PCF Metrics UI. If you have space developer privilege to certain spaces then you can only see the apps in those spaces in PCF Metrics UI.<br></li>
+</ul></li>
+<li>All v1.0.x tiles - SSO authentication is not supported. This feature is added in the 1.1 Metrics tile.</li>
+</ul>
+
+<h2><a id='v1.0.14'></a>Version 1.0.14</h2>
+
+<p><strong>Release Date: September 28, 2016</strong></p>
+
+<h3>Notes</h3>
+
+<ul>
+<li>PCF Metrics 1.0.14 - now with stemcell 3232.21</li>
+</ul>
+
+<h3>Known issues</h3>
+
+<ul>
+<li>For applications that do not have any activity in the past 24 hours, meaning no app events or HTTP requests have been generated, users do not see any data in the UI. They must also refresh their browser after metrics are generated by the use of the app.</li>
+<li>When installing the PCF Metrics tile, the default Resource Config settings for each resource pool may be over-sized for POC/Beta purposes. Adjust them manually to fit your specific environment. </li>
+<li>All v1.0.x tiles - if the apps dropdown is grayed out
+
+<ul>
+<li>Because of an earlier CLI bug, some PCF metrics apps are missing system org guid during tile upgrade/uninstall process which crashes PCF Metrics UI and makes the apps dropdown inaccessible. This is fixed in the 1.1 Metrics tile. A work around for this to remove the user&rsquo;s access to system org using CLI.</li>
+</ul></li>
+<li>All v1.0.x tiles - if some apps are not accessible from the dropdown even though they are accessible in apps manager
+
+<ul>
+<li>If you have apps manager/console admin privilege, you may be able to see apps in apps manager without having space developer role privilege to the spaces in which those apps reside. Metrics however follows permissions directly form cloud controller so if you have cloud.controller.admin privilege, you can see all apps in all spaces in all orgs in PCF Metrics UI. If you have space developer privilege to certain spaces then you can only see the apps in those spaces in PCF Metrics UI.<br></li>
+</ul></li>
+<li>All v1.0.x tiles - SSO authentication is not supported. This feature is added in the 1.1 Metrics tile.</li>
+</ul>
+
+<h2><a id='v1.0.13'></a>Version 1.0.13</h2>
+
+<p><strong>Release Date: August 31, 2016</strong></p>
+
+<h3>Notes</h3>
+
+<ul>
+<li>PCF Metrics 1.0.13 - Release bumps required CLI to CLI v6.21.1 and configures CLI environment variable CF_DIAL_TIMEOUT to 30 seconds to reduce chance of CLI errors when network connection attempts include slow DNS resolution times</li>
+</ul>
+
+<h3>Known issues</h3>
+
+<ul>
+<li>For applications that do not have any activity in the past 24 hours (which means no app events or http requests have been generated), users will not see any data in the UI. They will also need to refresh their browser after metrics are generated by the use of the app.</li>
+<li>While installing the PCF Metrics tile, the default Resource Config settings for each resource pool may be over-sized for POC/Beta purposes. You may adjust them manually to fit your environment. </li>
+<li>All v1.0.x tiles - if you see apps dropdown grayed out
+
+<ul>
+<li>Because of an earlier CLI bug, we have seen PCF metrics apps missing system org guid during tile upgrade/uninstall process which crashes PCF Metrics UI and makes the apps dropdown inaccessible. This is fixed in 1.1 Metrics tile. A work around for this to remove the user&rsquo;s access to system org using CLI.</li>
+</ul></li>
+<li>All v1.0.x tiles - if you don&rsquo;t see some apps in the dropdown even though they are accessible in apps manager
+
+<ul>
+<li>If you have apps manager/console admin privilege, you may be able to see apps in apps manager without having space developer role privilege to the spaces in which those apps reside. Metrics however follows permissions directly form cloud controller so if you have cloud.controller.admin privilege, you can see all apps in all spaces in all orgs in PCF Metrics UI. If you have space developer privilege to certain spaces then you can only see the apps in those spaces in PCF Metrics UI.<br></li>
+</ul></li>
+<li>All v1.0.x tiles - SSO authentication is not supported. This feature is added in the 1.1 Metrics tile.</li>
+</ul>
+
+<h2><a id='v1.0.11'></a>Version 1.0.11</h2>
+
+<p><strong>Release Date: August 24, 2016</strong></p>
+
+<h3>Notes</h3>
+
+<ul>
+<li>PCF Metrics 1.0.11 - now with stemcell 3232.17</li>
+</ul>
+
+<h3>Known issues</h3>
+
+<ul>
+<li>For applications that do not have any activity in the past 24 hours (which means no app events or http requests have been generated), users will not see any data in the UI. They will also need to refresh their browser after metrics are generated by the use of the app.</li>
+<li>While installing the PCF Metrics tile, the default Resource Config settings for each resource pool may be over-sized for POC/Beta purposes. You may adjust them manually to fit your environment. </li>
+<li>All v1.0.x tiles - if you see apps dropdown grayed out
+
+<ul>
+<li>Because of an earlier CLI bug, we have seen PCF metrics apps missing system org guid during tile upgrade/uninstall process which crashes PCF Metrics UI and makes the apps dropdown inaccessible. This is fixed in 1.1 Metrics tile. A work around for this to remove the user&rsquo;s access to system org using CLI.</li>
+</ul></li>
+<li>All v1.0.x tiles - if you don&rsquo;t see some apps in the dropdown even though they are accessible in apps manager
+
+<ul>
+<li>If you have apps manager/console admin privilege, you may be able to see apps in apps manager without having space developer role privilege to the spaces in which those apps reside. Metrics however follows permissions directly form cloud controller so if you have cloud.controller.admin privilege, you can see all apps in all spaces in all orgs in PCF Metrics UI. If you have space developer privilege to certain spaces then you can only see the apps in those spaces in PCF Metrics UI.<br></li>
+</ul></li>
+<li>All v1.0.x tiles - SSO authentication is not supported. This feature is added in the 1.1 Metrics tile.</li>
+</ul>
+
+<h2><a id='v1.0.10'></a>Version 1.0.10</h2>
+
+<p><strong>Release Date: July 15, 2016</strong></p>
+
+<h3>Notes</h3>
+
+<ul>
+<li>PCF Metrics 1.0.10 - BUG FIX: Corrects issue in 1.0.9 where the UI errand was not properly bumped to CLI v6.19, causing UI push to fail in some environments.</li>
+</ul>
+
+<h3>Known issues</h3>
+
+<ul>
+<li>For applications that do not have any activity in the past 24 hours (which means no app events or http requests have been generated), users will not see any data in the UI. They will also need to refresh their browser after metrics are generated by the use of the app.</li>
+<li>While installing the PCF Metrics tile, the default Resource Config settings for each resource pool may be over-sized for POC/Beta purposes. You may adjust them manually to fit your environment. </li>
+<li>All v1.0.x tiles - if you see apps dropdown grayed out
+
+<ul>
+<li>Because of an earlier CLI bug, we have seen PCF metrics apps missing system org guid during tile upgrade/uninstall process which crashes PCF Metrics UI and makes the apps dropdown inaccessible. This is fixed in 1.1 Metrics tile. A work around for this to remove the user&rsquo;s access to system org using CLI.</li>
+</ul></li>
+<li>All v1.0.x tiles - if you don&rsquo;t see some apps in the dropdown even though they are accessible in apps manager
+
+<ul>
+<li>If you have apps manager/console admin privilege, you may be able to see apps in apps manager without having space developer role privilege to the spaces in which those apps reside. Metrics however follows permissions directly form cloud controller so if you have cloud.controller.admin privilege, you can see all apps in all spaces in all orgs in PCF Metrics UI. If you have space developer privilege to certain spaces then you can only see the apps in those spaces in PCF Metrics UI.<br></li>
+</ul></li>
+<li>All v1.0.x tiles - SSO authentication is not supported. This feature is added in the 1.1 Metrics tile.</li>
+</ul>
+
+<h2><a id='v1.0.9'></a>Version 1.0.9</h2>
+
+<p><strong>Release Date: July 1, 2016</strong></p>
+
+<h3>Notes</h3>
+
+<ul>
+<li>PCF Metrics 1.0.9 - now with stemcell 3232.12. Release also bumps required CLI to CLI v6.19.</li>
+</ul>
+
+<h3>Known issues</h3>
+
+<ul>
+<li>BUG IDENTIFIED: An errand was missed when requiring the CLI v6.19 bump, leaving the UI push errand still on v6.18.1. This bug has caused the UI push to fail in some environments. Metrics v1.0.10 corrects. </li>
+<li>For applications that do not have any activity in the past 24 hours (which means no app events or http requests have been generated), users will not see any data in the UI. They will also need to refresh their browser after metrics are generated by the use of the app.</li>
+<li>While installing the PCF Metrics tile, the default Resource Config settings for each resource pool may be over-sized for POC/Beta purposes. You may adjust them manually to fit your environment. </li>
+</ul>
+
+<h2><a id='v1.0.8'></a>Version 1.0.8</h2>
+
+<p><strong>Release Date: June 23, 2016</strong></p>
+
+<h3>Notes</h3>
+
+<ul>
+<li>This release fixes a route issue in prior versions of PCF Metrics v1.0 where you could receive a &ldquo;404 Not Found: Requested route does not exist in PCF Metrics&rdquo; error.</li>
+</ul>
+
+<h3>Known issues</h3>
+
+<ul>
+<li>For applications that do not have any activity in the past 24 hours (which means no app events or http requests have been generated), users will not see any data in the UI. They will also need to refresh their browser after metrics are generated by the use of the app.</li>
+<li>While installing the PCF Metrics tile, the default Resource Config settings for each resource pool may be over-sized for POC/Beta purposes. You may adjust them manually to fit your environment. </li>
+<li>No direct upgrade path. Operators can delete the installed tile and install the new tile.  This does result in downtime and data loss.</li>
+</ul>
+
+<h2><a id='v1.0.4'></a>Version 1.0.4</h2>
+
+<h3>Notes</h3>
+
+<ul>
+<li>Update to use Stemcell 3146.11</li>
+<li>Change list of apps available to a user and prevent overload of Cloud Controller API</li>
+<li>The route for the PCF Metrics application is registered as <code>metrics.&lt;system-domain&gt;</code> in this v1.0.4 release.   The application can be accessed at <code>https://metrics.&lt;system-domain&gt;</code></li>
+<li>The install will create a small deployment suitable for hundreds of apps. This is not configured for thousands of apps.</li>
+</ul>
+
+<h3>Known Issues</h3>
+
+<ul>
+<li>Route mappings for <code>metrics.&lt;system_domain&gt;</code> and <code>metrics.&lt;system_domain&gt;/v2</code> may be overwritten or incorrectly mapped during redeploys.</li>
+<li>For applications that do not have any activity in the past 24 hours (which means no app events or http requests have been generated), users will not see any data in the UI. They will also need to refresh their browser after metrics are generated by the use of the app.</li>
+<li>While installing the PCF Metrics tile, the default Resource Config settings for each resource pool may be over-sized for POC/Beta purposes. You may adjust them manually to fit your environment. </li>
+<li>No direct upgrade path. Operators can delete the installed tile and install the new tile.  This does result in downtime and data loss.</li>
+</ul>
+
+<h2><a id='v1.0.3'></a>Version 1.0.3</h2>
+
+<h3>Known issues</h3>
+
+<ul>
+<li>Not all applications metrics are accessible to admin users.</li>
+<li>For applications that do not have any activity in the past 24 hours (which means no app events or http requests have been generated), users will not see any data in the UI. They will also need to refresh their browser after metrics are generated by the use of the app.</li>
+<li>While installing the PCF Metrics tile, the default Resource Config settings for each resource pool may be over-sized for POC/Beta purposes. You may adjust them manually to fit your environment.</li>
+</ul>
+
+<h3>Notes</h3>
+
+<ul>
+<li>Updated to use stemcell 3146.5</li>
+<li>This beta requires Elastic Runtime v1.6.16 or greater. </li>
+<li>The route for the PCF Metrics application is registered as <code>metrics.&lt;system-domain&gt;</code> in this v1.0.3 release.   The application can be accessed at <code>https://metrics.&lt;system-domain&gt;</code></li>
+<li>The install will create a small deployment suitable for hundreds of apps. This is not configured for thousands of apps.</li>
+</ul>
+
+        <div><a id='repo-link' href='http://github.com/pivotal-cf/docs-metrics/tree/1.0/rn-ki.html.md.erb'>View the source for this page in GitHub</a></div>
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    <div class="copyright">
+  <a href='https://pivotal.io/privacy-policy'>Privacy Policy</a> | 
+  <a href='https://pivotal.io/terms-of-use'>Terms of Use</a><br/>
+  <a href='/'>Pivotal Documentation</a>
+  &copy; 2017 <a href='https://pivotal.io'>Pivotal Software</a>, Inc. All Rights Reserved.
+</div>
+<div class="support">
+  Need help? <a href="http://support.pivotal.io" target="_blank">Visit Support</a>
+</div>
+
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

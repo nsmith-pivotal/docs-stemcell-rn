@@ -1,0 +1,322 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      Installing PCF Metrics |
+    Pivotal Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+<script type="text/javascript">
+  if (window.location.host === 'docs.pivotal.io') {
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39702075-1']);
+    _gaq.push(['_setDomainName', 'pivotal.io']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+    })();
+  }
+</script>
+
+<script type="text/javascript">
+  var blackList = ['acceptance'];
+
+  blackList.forEach(function(blackListedEnv) {
+    if (document.URL.indexOf(blackListedEnv) > -1 && blackListedEnv != "") {
+      $('head').append('<meta name="hashtag" content="PivotalMoment">');
+    }
+  });
+</script>
+
+<!-- CrazyEgg Tracking Script -->
+  <script type="text/javascript">
+  setTimeout(function(){var a=document.createElement("script");
+  var b=document.getElementsByTagName("script")[0];
+  a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0055/2990.js?"+Math.floor(new Date().getTime()/3600000);
+  a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+  </script>
+
+<!-- Munchkin Marketo Script -->
+<script type="text/javascript">
+  (function() {
+    var didInit = false;
+
+    function initMunchkin() {
+      if (didInit === false) {
+        didInit = true;
+        Munchkin.init('625-IUJ-009');
+      }
+    }
+
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = document.location.protocol + '//munchkin.marketo.net/munchkin.js';
+    s.onreadystatechange = function() {
+      if (this.readyState == 'complete' || this.readyState == 'loaded') {
+        initMunchkin();
+      }
+    };
+    s.onload = initMunchkin;
+    document.getElementsByTagName('head')[0].appendChild(s);
+  })();
+</script>
+
+</head>
+
+<body class="pcf-metrics pcf-metrics_1-1 pcf-metrics_1-1_installing has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "pivotal.io";
+    </script>
+
+      <header class="global-header header header-layout js-bar-links">
+    <a class="pivotal-logo" href="/">
+    </a>
+    <a href="/" class="global-header-title">
+      <span class="title-deemph">Pivotal</span> Documentation
+    </a>
+    <div class="btn-menu" data-behavior="MenuMobile"></div>
+    <div class="header-links">
+      <div class="header-item">
+        <a href="https://network.pivotal.io/">Downloads</a>
+      </div>
+      <div class="header-item">
+        <a href="http://support.pivotal.io" target="_blank">Support</a>
+      </div>
+
+      <div class="header-item embedded-searchbar">
+          <form method="get" action="/search">
+            <input name="q" placeholder="Search PCF Metrics 1.1" class="search-box" />
+              <input type="hidden" name="product_name" value="PCF Metrics" />
+              <input type="hidden" name="product_version" value="1.1"/>
+          </form>
+      </div>
+      
+    </div>
+  </header>
+
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a id='home-nav-link' href="/pcf-metrics/1-1/index.html">Pivotal Cloud Foundry Metrics</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-1/installing.html">Installing PCF Metrics</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-1/sizing.html">Sizing PCF Metrics for Your System</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-1/using.html">Using PCF Metrics</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-1/architecture.html">PCF Metrics Product Architecture</a>
+      </li>
+
+      <li>
+        <a href="/pcf-metrics/1-1/rn-ki.html">Release Notes and Known Issues</a>
+      </li>
+
+    </ul>
+  </div>
+</div><!--end of sub-nav-->
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+          <div class="local-header title-container">
+    <div class="local-header version-info">
+      LATEST VERSION: 1.4 - <a href="">CHANGELOG</a>
+    </div>
+    <div class="local-header local-title clearfix">
+      <img src="/images/cloud_rings.png">
+      <span class="local-header-title">PCF Metrics
+      </span>
+      <span class="local-header local-version header-dropdown">
+        <a class="local-header header-dropdown-link">v1.1</a>
+        <span class="local-header header-dropdown-content">
+          <ul>
+                <li>
+                    <a href="http://docs.pivotal.io/pcf-metrics/1-4/installing.html">v1.4</a>
+                </li>
+                <li>
+                    <a href="http://docs.pivotal.io/pcf-metrics/1-3/installing.html">v1.3</a>
+                </li>
+                <li>
+                    <a href="http://docs.pivotal.io/pcf-metrics/1-2/installing.html">v1.2</a>
+                </li>
+                <li>
+                    <a href="http://docs.pivotal.io/pcf-metrics/1-0/installing.html">v1.0</a>
+                </li>
+          </ul>
+        </span>
+      </span>
+
+      <!-- search was here -->
+    </div>
+    <div class="local-header local-header-links">
+    </div>
+  </div>
+
+          <h1 class="title-container" >
+    Installing PCF Metrics
+  </h1>
+
+          <div id="js-quick-links" class="list-style-none">
+            <div class="quick-links"><ul>
+<li><a href="#pre-reqs">Prerequisites</a></li>
+<li><a href="#step1">Step 1: Add the PCF Metrics Tile to Ops Manager</a></li>
+<li><a href="#step2">Step 2: Configure the PCF Metrics Tile</a></li>
+<li><a href="#step3">Step 3: Deploy PCF Metrics</a></li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <p>This document describes how to install and configure Pivotal Cloud Foundry (PCF) Metrics.</p>
+
+<p class="note"><strong>Note</strong>: With the addition of application logs in PCF Metrics 1.1.X, the product has introduced new Elastic Search Master and Data nodes for logs storage. The additional storage required to support application logs increases the default tile size on install by approximately 250GB.</p> 
+
+<h2><a id='pre-reqs'></a>Prerequisites</h2>
+
+<p>Ensure that you have installed the <a href="http://docs.pivotal.io/pivotalcf/installing/index.html">Elastic Runtime Tile</a>.</p>
+
+<p class="note"><strong>Note</strong>: The default <strong>Loggregator Port</strong> in Elastic Runtime is 443. In an AWS environment, the port must be changed to 4443.</p> 
+  
+
+<h2><a id='step1'></a> Step 1: Add the PCF Metrics Tile to Ops Manager</h2>
+
+<p><p class='note'><strong>Note</strong>: PCF Metrics should be installed on the same network as the Elastic Runtime Tile. </p></p>
+
+<ol>
+<li>Download the PCF Metrics file from
+<a href="https://network.pivotal.io/products/pcf-metrics">Pivotal Network</a>.</li>
+<li>Upload the PCF Metrics file to your Ops Manager installation.</li>
+<li>Click <strong>Add</strong> next to the uploaded product description in the <strong>Available Products</strong>
+view to add PCF Metrics to your <strong>Installation Dashboard</strong>.</li>
+</ol>
+
+<h2><a id='step2'></a>Step 2: Configure the PCF Metrics Tile</h2>
+
+<p class="note"><strong>Note</strong>: The following procedures offer a standard configuration. To customize PCF Metrics for high capacity, see the <a href="sizing.html">Sizing PCF Metrics For Your System</a> topic.</p>
+
+<p>From the <strong>Installation Dashboard</strong>, click the <strong>PCF Metrics</strong> tile.</p>
+
+<p class='note'><strong>Note:</strong> The tile appears orange when it requires configuration.</p>
+
+<h3>Assign Availability Zones (AZs) and Networks.</h3>
+
+<ol>
+<li>Click <strong>Assign AZs and Networks</strong>.</li>
+<li>Select an Availability Zone under <strong>Place singleton jobs</strong>.
+<br>
+Ops Manager runs Metrics jobs with a single instance in this Availability Zone.</li>
+<li>Select one or more Availability Zones under <strong>Balance other jobs</strong>.
+<br>
+Ops Manager balances instances of Metrics jobs with more than one instance
+across the Availability Zones that you specify.</li>
+<li>Use the drop-down menu to select a network.</li>
+<li>Click <strong>Save</strong>.</li>
+</ol>
+
+<h3>Ingestor Options</h3>
+
+<ol>
+<li>Click <strong>Push Ingestor</strong>.
+<img alt="Ingestor" src="images/push-ingestor.png" /></li>
+<li>Review the <strong>Instance Count</strong> value. The PCF Metrics tile deploys one instance of the ingestor by default. You can increase this instance count at any time to accommodate higher levels of inbound log traffic. </li>
+<li>Click <strong>Save</strong>.</li>
+</ol>
+
+<h3>Errands</h3>
+
+<ol>
+<li><p>Click <strong>Errands</strong>.</p></li>
+<li><p>Review the <strong>Pre-Delete Errands</strong>. If you deselect the <strong>Cleanup</strong> checkbox, artifacts may remain after the PCF Metrics tile uninstalls.</p></li>
+</ol>
+
+<p class="note"><strong>Note:</strong> The PCF Metrics tile selects all <strong>Post-Deploy Errands</strong>, by default. Do not deselect any of these checkboxes.</p>
+
+<h3>Resource Config</h3>
+
+<ol>
+<li>Click <strong>Resource Config</strong>.
+<img alt="Resource Config" src="images/resource-config.png" /></li>
+<li>Review the resource configurations. By default, the settings match the instance types that are best suited for each job. If you expect a high level of use, you may need to increase the disk resources available to your instances.</li>
+<li>Click <strong>Save</strong>.</li>
+</ol>
+
+<h3>Stemcell</h3>
+
+<ol>
+<li>Navigate to <a href="https://network.pivotal.io">Pivotal Network</a> and click <strong>Stemcells</strong>.</li>
+<li>Download the appropriate stemcell version for your IaaS.
+<p class='note'><strong>Note:</strong> On AWS make sure to use a HVM stemcell if you are using the default instance sizes.</p></li>
+<li>Click <strong>Import Stemcell</strong> and select the stemcell file you downloaded.</li>
+</ol>
+
+<h2><a id='step3'></a>Step 3: Deploy PCF Metrics</h2>
+
+<p>Click <strong>Apply Changes</strong> to install the service. Review the <a href="/pcf-metrics/1-1/using.html">Using PCF Metrics</a> topic for more information on how to log in, use, and interpret data from PCF Metrics.</p>
+
+        <div><a id='repo-link' href='http://github.com/pivotal-cf/docs-metrics/tree/1.1/installing.html.md.erb'>View the source for this page in GitHub</a></div>
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    <div class="copyright">
+  <a href='https://pivotal.io/privacy-policy'>Privacy Policy</a> | 
+  <a href='https://pivotal.io/terms-of-use'>Terms of Use</a><br/>
+  <a href='/'>Pivotal Documentation</a>
+  &copy; 2017 <a href='https://pivotal.io'>Pivotal Software</a>, Inc. All Rights Reserved.
+</div>
+<div class="support">
+  Need help? <a href="http://support.pivotal.io" target="_blank">Visit Support</a>
+</div>
+
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>
