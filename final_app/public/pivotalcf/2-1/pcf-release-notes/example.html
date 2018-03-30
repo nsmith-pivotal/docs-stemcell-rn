@@ -1,0 +1,806 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      Stemcell Release Notes (Example Output) |
+    Pivotal Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+<script type="text/javascript">
+  if (window.location.host === 'docs.pivotal.io') {
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39702075-1']);
+    _gaq.push(['_setDomainName', 'pivotal.io']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+    })();
+  }
+</script>
+
+<script type="text/javascript">
+  var blackList = ['acceptance'];
+
+  blackList.forEach(function(blackListedEnv) {
+    if (document.URL.indexOf(blackListedEnv) > -1 && blackListedEnv != "") {
+      $('head').append('<meta name="hashtag" content="PivotalMoment">');
+    }
+  });
+</script>
+
+<!-- CrazyEgg Tracking Script -->
+  <script type="text/javascript">
+  setTimeout(function(){var a=document.createElement("script");
+  var b=document.getElementsByTagName("script")[0];
+  a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0055/2990.js?"+Math.floor(new Date().getTime()/3600000);
+  a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+  </script>
+
+<!-- Munchkin Marketo Script -->
+<script type="text/javascript">
+  (function() {
+    var didInit = false;
+
+    function initMunchkin() {
+      if (didInit === false) {
+        didInit = true;
+        Munchkin.init('625-IUJ-009');
+      }
+    }
+
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = document.location.protocol + '//munchkin.marketo.net/munchkin.js';
+    s.onreadystatechange = function() {
+      if (this.readyState == 'complete' || this.readyState == 'loaded') {
+        initMunchkin();
+      }
+    };
+    s.onload = initMunchkin;
+    document.getElementsByTagName('head')[0].appendChild(s);
+  })();
+</script>
+
+</head>
+
+<body class="pivotalcf pivotalcf_2-1 pivotalcf_2-1_pcf-release-notes pivotalcf_2-1_pcf-release-notes_example has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "pivotal.io";
+    </script>
+
+      <header class="global-header header header-layout js-bar-links">
+    <a class="pivotal-logo" href="/">
+    </a>
+    <a href="/" class="global-header-title">
+      <span class="title-deemph">Pivotal</span> Documentation
+    </a>
+    <div class="btn-menu" data-behavior="MenuMobile"></div>
+    <div class="header-links">
+      <div class="header-item">
+        <a href="https://network.pivotal.io/">Downloads</a>
+      </div>
+      <div class="header-item">
+        <a href="http://support.pivotal.io" target="_blank">Support</a>
+      </div>
+
+      <div class="header-item embedded-searchbar">
+          <form method="get" action="/search">
+            <input name="q" placeholder="Search" class="search-box" />
+              <input type="hidden" name="product_name" value="Stemcell Release Notes" />
+              <input type="hidden" name="product_version" value="2.1"/>
+          </form>
+      </div>
+      
+    </div>
+  </header>
+
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav nav-container" role="navigation">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    Doc Index
+  </a>
+  <div class="nav-content">
+    <ul>
+      <li>
+        <a id='home-nav-link' href="/pivotalcf/2-1/pcf-release-notes/example.html">Example Output</a>
+      </li>
+
+      <li>
+        <a href="/pivotalcf/2-1/pcf-release-notes/test.html">Testing Output</a>
+      </li>
+
+    </ul>
+  </div>
+</div><!--end of sub-nav-->
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+          <div class="local-header title-container">
+    <div class="local-header version-info">
+      LATEST VERSION: 2.1 - <a href="">CHANGELOG</a>
+    </div>
+    <div class="local-header local-title clearfix">
+      <img src="/images/cloud_rings.png">
+      <span class="local-header-title">Stemcell Release Notes
+      </span>
+      <span class="local-header local-version header-dropdown">
+        <a class="local-header header-dropdown-link">v2.1</a>
+        <span class="local-header header-dropdown-content">
+          <ul>
+          </ul>
+        </span>
+      </span>
+
+      <!-- search was here -->
+    </div>
+    <div class="local-header local-header-links">
+    </div>
+  </div>
+
+          <h1 class="title-container" >
+    Stemcell Release Notes (Example Output)
+  </h1>
+
+          <div id="js-quick-links" >
+            <div class="quick-links"><ul>
+<li><a href="#3541-x">v3541.x</a></li>
+<li><a href="#3445-x">v3445.x</a></li>
+<li><a href="#3445-19">3445.19</a></li>
+<li><a href="#3445-17">3445.17</a></li>
+<li><a href="#3445-11">3445.11</a></li>
+<li><a href="#3445-7">3445.7</a></li>
+<li><a href="#3468-x">v3468.x</a></li>
+<li><a href="#3421-x">v3421.x</a></li>
+<li><a href="#3363-x">v3363.x</a></li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <h2><a id="3541-x"></a>v3541.x</h2>
+
+<h3><a name="3541-10"></a>3541.10</h3>
+
+<p><strong>Release Date</strong>: March 27, 2018</p>
+
+<ul>
+<li>Periodic Ubuntu and CentOS stemcell bump</li>
+</ul>
+
+<h3><a name="3541-9"></a>3541.9</h3>
+
+<ul>
+<li>Periodic Ubuntu and CentOS stemcell bump</li>
+</ul>
+
+<p><strong>Release Date</strong>: March 13, 2018</p>
+
+<h3><a name="3541-8"></a>3541.8</h3>
+
+<p><strong>Release Date</strong>: March 10, 2018</p>
+
+<ul>
+<li>Bump bosh-agent to 2.67.1
+
+<ul>
+<li>Agent will now respect previously set permissions and owner on sys/run, sys/log and data job directories</li>
+<li>This should fix stemcell compatibility with Diego/Garden if Agent restarts
+
+<ul>
+<li>If you were using 3541.x stemcell for any of your deployments, it&rsquo;s recommended to update your deployments to this version before updating Director since that would cause Agent restart </li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h2><a id="3445-x"></a>v3445.x</h2>
+
+<h3><a name="3445-30"></a>3445.30</h3>
+
+<p><strong>Release Date</strong>: March 28, 2018</p>
+
+<ul>
+<li>Periodic Ubuntu Trusty stemcell bump </li>
+</ul>
+
+<h3><a name="3445-29"></a>3445.29</h3>
+
+<p><strong>Release Date</strong>: March 13, 2018</p>
+
+<ul>
+<li>Periodic Ubuntu Trusty stemcell bump </li>
+</ul>
+
+<h3><a name="3445-28"></a>3445.28</h3>
+
+<p><strong>Release Date</strong>: February 23, 2018</p>
+
+<ul>
+<li>Bump Ubuntu Trusty stemcells for USN-3582-2: Linux kernel (Xenial HWE) vulnerabilities</li>
+</ul>
+
+<h3><a name="3445-24"></a>3445.24</h3>
+
+<p><strong>Release Date</strong>: January 23, 2018</p>
+
+<ul>
+<li>Bump Ubuntu Trusty stemcells for USN-3540-2: Linux kernel (Xenial HWE) vulnerabilities. This addresses the flaw known as Spectre. This update may include degradations to performance. Pivotal will do additional performance testing and provide updates as more information is available.</li>
+</ul>
+
+<h3><a name="3445-23"></a>3445.23</h3>
+
+<p><strong>Release Date</strong>: January 18, 2018</p>
+
+<ul>
+<li>Bump Ubuntu Trusty stemcells for USN-3534-1: GNU C Library vulnerabilities</li>
+</ul>
+
+<h3><a name="3445-22"></a>3445.22</h3>
+
+<p><strong>Release Date</strong>: January 10, 2018</p>
+
+<ul>
+<li>Bumps Ubuntu Trusty stemcells for USN-3522-4; also bumps vSphere stemcells to use VM hardware version 9</li>
+<li>USN-3522-2 introduced a regression in the Linux Hardware Enablement kernel and USN-3522-4 fixes that issue.</li>
+<li>Per the 3445.21 release note, monitor your VMs prior to upgrading to this stemcell and scale your VMs as necessary. </li>
+</ul>
+
+<h3><a name="3445-21"></a>3445.21</h3>
+
+<p><strong>Release Date</strong>: January 10, 2018</p>
+
+<ul>
+<li>Bump Ubuntu Trusty stemcells for <a href="https://usn.ubuntu.com/usn/usn-3522-2/">USN-3522-2: Linux (Xenial HWE) vulnerability</a> (This flaw is known as Meltdown.)</li>
+</ul>
+
+<h4><a name='critical'></a> USN-3522-2 Addresses Meltdown Vulnerabilities</h4>
+
+<p>Meltdown exploits critical vulnerabilities in modern processors.
+For more information about Meltdown, see the <a href="https://www.cloudfoundry.org/blog/meltdown-spectre-attacks/">Meltdown and Spectre Attacks</a> blog post.
+<a href="https://www.cloudfoundry.org/usn-3522-2/">USN-3522-2</a> addresses the critical vulnerability in Ubuntu associated with Meltdown.
+</br>
+</br>
+This update may include degradations to performance if your VM&rsquo;s CPU and memory usage are currently at near-capacity levels.
+Prior to upgrading to this stemcell, monitor your PCF VM&rsquo;s current CPU and memory usage and scale those components if necessary. If any of your VMs are currently operating at 60% or above, Pivotal recommends scaling that VM.
+For more information about the performance impact of Meltdown-related stemcell patches on PCF components and guidance on scaling, see this <a href="https://discuss.pivotal.io/hc/en-us/articles/360000309953">KB article</a>.
+</br>
+</br>
+For more information about monitoring and scaling PCF, see the <a href="http://docs.pivotal.io/pivotalcf/2-0/customizing/monitoring.html">Monitoring PCF VMs from Ops Manager</a>,
+<a href="https://docs.pivotal.io/pivotalcf/monitoring/key-cap-scaling.html">Key Capacity Scaling Indicators</a>,
+and <a href="../opsguide/scaling-ert-components.html">Scaling PAS</a> topics. Performance degradation is likely to vary by workload type, IaaS, and other factors.
+Pivotal recommends testing your deployment thoroughly after upgrading to this stemcell.</p>
+
+<h2><a id="3445-19"></a>3445.19</h2>
+
+<p><strong>Release Date</strong>: December 8, 2017</p>
+
+<ul>
+<li>Bump Ubuntu Trusty stemcell USN-3509-2: Linux kernel (Xenial HWE) vulnerabilities</li>
+</ul>
+
+<h2><a id="3445-17"></a>3445.17</h2>
+
+<p><strong>Release Date</strong>: December 1, 2017</p>
+
+<ul>
+<li>Periodic Ubuntu stemcells update</li>
+</ul>
+
+<h2><a id="3445-11"></a>3445.11</h2>
+
+<p><strong>Release Date</strong>: September 20, 2017</p>
+
+<ul>
+<li>Bump Ubuntu stemcells for USN-3420-2: Linux kernel (Xenial HWE) vulnerabilities</li>
+</ul>
+
+<h2><a id="3445-7"></a>3445.7</h2>
+
+<p><strong>Release Date</strong>: September 1, 2017</p>
+
+<ul>
+<li><p>Logrotate /var/log/wtmp and utmp more aggressively</p></li>
+<li><p>Updated BOSH agent to include aggressive 5 minute timeout on NATS connection failure</p></li>
+<li><p>Set auditd rules to be mutable by default</p>
+
+<ul>
+<li>Please use <code>auditd</code> job from os-conf-release to make rules immutable</li>
+</ul></li>
+</ul>
+
+<h2><a id="3468-x"></a>v3468.x</h2>
+
+<h3><a name="3468-28"></a>3468.28</h3>
+
+<p><strong>Release Date</strong>: March 28, 2018</p>
+
+<ul>
+<li>Periodic Ubuntu and CentOS stemcell bump </li>
+</ul>
+
+<h3><a name="3468-27"></a>3468.27</h3>
+
+<p><strong>Release Date</strong>: March 13, 2018</p>
+
+<ul>
+<li>Periodic Ubuntu and CentOS stemcell bump </li>
+</ul>
+
+<h3><a name="3468-25"></a>3468.25</h3>
+
+<p><strong>Release Date</strong>: February 23, 2018</p>
+
+<ul>
+<li>Bump Ubuntu Trusty stemcells for USN-3582-2: Linux kernel (Xenial HWE) vulnerabilities</li>
+</ul>
+
+<h3><a name="3468-21"></a>3468.21</h3>
+
+<p><strong>Release Date</strong>: January 25, 2018</p>
+
+<p>No functional change except version number</p>
+
+<h3><a name="3468-20"></a>3468.20</h3>
+
+<p><strong>Release Date</strong>: January 23, 2018</p>
+
+<ul>
+<li>Bump Ubuntu Trusty stemcells for USN-3540-2: Linux kernel (Xenial HWE) vulnerabilities. This addresses the flaw known as Spectre. This update may include degradations to performance. Pivotal will do additional performance testing and provide updates as more information is available.</li>
+</ul>
+
+<h3><a name="3468-19"></a>3468.19</h3>
+
+<p><strong>Release Date</strong>: January 18, 2018</p>
+
+<p>Bump Ubuntu Trusty stemcells for USN-3534-1: GNU C Library vulnerabilities</p>
+
+<h3><a name="3468-17"></a>3468.17</h3>
+
+<p><strong>Release Date</strong>: January 10, 2018</p>
+
+<ul>
+<li>Bumps Ubuntu Trusty stemcells for USN-3522-4; also bumps vSphere stemcells to use VM hardware version 9</li>
+<li>USN-3522-2 introduced a regression in the Linux Hardware Enablement kernel and USN-3522-4 fixes that issue.</li>
+<li>Per the 3468.16 release note, monitor your VMs prior to upgrading to this stemcell and scale your VMs as necessary. </li>
+</ul>
+
+<h3><a name="3468-16"></a>3468.16</h3>
+
+<p><strong>Release Date</strong>: January 10, 2018</p>
+
+<ul>
+<li>Bump Ubuntu Trusty stemcells for <a href="https://usn.ubuntu.com/usn/usn-3522-2/">USN-3522-2: Linux (Xenial HWE) vulnerability</a> (This flaw is known as Meltdown.)</li>
+</ul>
+
+<h4><a name='critical'></a> USN-3522-2 Addresses Meltdown Vulnerabilities</h4>
+
+<p>Meltdown exploits critical vulnerabilities in modern processors.
+For more information about Meltdown, see the <a href="https://www.cloudfoundry.org/blog/meltdown-spectre-attacks/">Meltdown and Spectre Attacks</a> blog post.
+<a href="https://www.cloudfoundry.org/usn-3522-2/">USN-3522-2</a> addresses the critical vulnerability in Ubuntu associated with Meltdown.
+</br>
+</br>
+This update may include degradations to performance if your VM&rsquo;s CPU and memory usage are currently at near-capacity levels.
+Prior to upgrading to this stemcell, monitor your PCF VM&rsquo;s current CPU and memory usage and scale those components if necessary. If any of your VMs are currently operating at 60% or above, Pivotal recommends scaling that VM.
+For information about the performance impact of Meltdown-related stemcell patches on PCF components and guidance on scaling, see this <a href="https://discuss.pivotal.io/hc/en-us/articles/360000309953">KB article</a>.
+</br>
+</br>
+For more information about monitoring and scaling PCF, see the <a href="http://docs.pivotal.io/pivotalcf/2-0/customizing/monitoring.html">Monitoring PCF VMs from Ops Manager</a>,
+<a href="https://docs.pivotal.io/pivotalcf/monitoring/key-cap-scaling.html">Key Capacity Scaling Indicators</a>,
+and <a href="http://docs.pivotal.io/pivotalcf/2-0/opsguide/scaling-ert-components.html">Scaling PAS</a> topics. Performance degradation is likely to vary by workload type, IaaS, and other factors.
+Pivotal recommends testing your deployment thoroughly after upgrading to this stemcell.</p>
+
+<h3><a name="3468-13"></a>3468.13</h3>
+
+<p><strong>Release Date</strong>: December 8, 2017</p>
+
+<ul>
+<li>Bump Ubuntu Trusty stemcell USN-3509-2: Linux kernel (Xenial HWE) vulnerabilities</li>
+</ul>
+
+<h2><a id="3421-x"></a>v3421.x</h2>
+
+<h3><a name="3421-44"></a>3421.44</h3>
+
+<p><strong>Release Date</strong>: March 28, 2018</p>
+
+<ul>
+<li>Periodic Ubuntu Trusty stemcell bump </li>
+</ul>
+
+<h3><a name="3421-43"></a>3421.43</h3>
+
+<p><strong>Release Date</strong>: March 13, 2018</p>
+
+<ul>
+<li>Periodic Ubuntu Trusty stemcell bump </li>
+</ul>
+
+<h3><a name="3421-42"></a>3421.42</h3>
+
+<p><strong>Release Date</strong>: February 23, 2018</p>
+
+<ul>
+<li>Bump Ubuntu Trusty stemcells for USN-3582-2: Linux kernel (Xenial HWE) vulnerabilities</li>
+</ul>
+
+<h3><a name="3421-38"></a>3421.38</h3>
+
+<p><strong>Release Date</strong>: January 23, 2018</p>
+
+<ul>
+<li>Bump Ubuntu Trusty stemcells for USN-3540-2: Linux kernel (Xenial HWE) vulnerabilities. This addresses the flaw known as Spectre. This update may include degradations to performance. Pivotal will do additional performance testing and provide updates as more information is available.</li>
+</ul>
+
+<h3><a name="3421-37"></a>3421.37</h3>
+
+<p><strong>Release Date</strong>: January 18, 2018</p>
+
+<ul>
+<li>Bump Ubuntu Trusty stemcells for USN-3534-1: GNU C Library vulnerabilities</li>
+</ul>
+
+<h3><a name="3421-36"></a>3421.36</h3>
+
+<p><strong>Release Date</strong>: January 10, 2018</p>
+
+<ul>
+<li>Bumps Ubuntu Trusty stemcells for USN-3522-4; also bumps vSphere stemcells to use VM hardware version 9</li>
+<li>USN-3522-2 introduced a regression in the Linux Hardware Enablement kernel and USN-3522-4 fixes that issue.</li>
+<li>Per the 3421.35 release note, monitor your VMs prior to upgrading to this stemcell and scale your VMs as necessary. </li>
+</ul>
+
+<h3><a name="3421-35"></a>3421.35</h3>
+
+<p><strong>Release Date:</strong> January 10, 2018</p>
+
+<ul>
+<li>Bump Ubuntu Trusty stemcells for USN-3522-2: Linux (Xenial HWE) vulnerability (This flaw is known as Meltdown.)</li>
+</ul>
+
+<h4><a name='critical'></a> USN-3522-2 Addresses Meltdown Vulnerabilities</h4>
+
+<p>Meltdown exploits critical vulnerabilities in modern processors.
+For more information about Meltdown, see the <a href="https://www.cloudfoundry.org/blog/meltdown-spectre-attacks/">Meltdown and Spectre Attacks</a> blog post.
+<a href="https://www.cloudfoundry.org/usn-3522-2/">USN-3522-2</a> addresses the critical vulnerability in Ubuntu associated with Meltdown.
+</br>
+</br>
+This update may include degradations to performance if your VM&rsquo;s CPU and memory usage are currently at near-capacity levels.
+Prior to upgrading to this stemcell, monitor your PCF VM&rsquo;s current CPU and memory usage and scale those components if necessary. If any of your VMs are currently operating at 60% or above, Pivotal recommends scaling that VM.
+For more information about the performance impact of Meltdown-related stemcell patches on PCF components and guidance on scaling, see this <a href="https://discuss.pivotal.io/hc/en-us/articles/360000309953">KB article</a>.
+</br>
+</br>
+For more information about monitoring and scaling PCF, see the <a href="http://docs.pivotal.io/pivotalcf/2-0/customizing/monitoring.html">Monitoring PCF VMs from Ops Manager</a>,
+<a href="https://docs.pivotal.io/pivotalcf/monitoring/key-cap-scaling.html">Key Capacity Scaling Indicators</a>,
+and <a href="../opsguide/scaling-ert-components.html">Scaling PAS</a> topics. Performance degradation is likely to vary by workload type, IaaS, and other factors.
+Pivotal recommends testing your deployment thoroughly after upgrading to this stemcell.</p>
+
+<h3><a name="3421-34"></a>3421.34</h3>
+
+<p><strong>Release Date</strong>: December 8, 2017</p>
+
+<ul>
+<li>Bump Ubuntu Trusty stemcell USN-3509-2: Linux kernel (Xenial HWE) vulnerabilities</li>
+</ul>
+
+<h3><a name="3421-32"></a>3421.32</h3>
+
+<p><strong>Release Date</strong>: December 1, 2017</p>
+
+<ul>
+<li>Periodic Ubuntu stemcells update</li>
+</ul>
+
+<h3><a name="3421-20"></a>3421.20</h3>
+
+<p><strong>Release Date</strong>: August 17, 2017</p>
+
+<ul>
+<li>Bump Ubuntu stemcells for <a href="https://usn.ubuntu.com/usn/usn-3392-2/">USN-3392-2: Linux kernel (Xenial HWE) regression</a></li>
+</ul>
+
+<h3><a name="3421-19"></a>3421.19</h3>
+
+<p><strong>Release Date</strong>: August 12, 2017</p>
+
+<ul>
+<li>Bump Ubuntu stemcells for <a href="https://usn.ubuntu.com/usn/usn-3385-2/">USN-3385-2: Linux kernel (Xenial HWE) vulnerabilities</a></li>
+</ul>
+
+<h3><a name="3421-18"></a>3421.18</h3>
+
+<p><strong>Release Date</strong>: August 4, 2017</p>
+
+<ul>
+<li><p>Bump Ubuntu Trusty stemcells for <a href="https://usn.ubuntu.com/usn/usn-3378-2/">USN-3378-2: Linux kernel (Xenial HWE) vulnerabilities</a></p></li>
+<li><p>Fix occasional rsyslog hang on startup</p>
+
+<ul>
+<li>Workaround for <a href="https://github.com/rsyslog/rsyslog/issues/1188">https://github.com/rsyslog/rsyslog/issues/1188</a></li>
+</ul></li>
+</ul>
+
+<h3><a name="3421-9"></a>3421.9</h3>
+
+<p><strong>Release Date</strong>: June 21, 2017</p>
+
+<ul>
+<li>Bump Ubuntu stemcells for USN-3334-1: Linux kernel (Xenial HWE) vulnerabilities</li>
+</ul>
+
+<h3><a name="3421-3"></a>3421.3</h3>
+
+<p><strong>Release Date</strong>: May 30, 2017</p>
+
+<ul>
+<li>Bump Ubuntu stemcells for USN-3304-1: Sudo vulnerability</li>
+</ul>
+
+<h3><a name="3421"></a>3421</h3>
+
+<p><strong>Release Date</strong>: May 23, 2017</p>
+
+<p>New:</p>
+
+<ul>
+<li><p>Added <code>env.bosh.remove_static_libraries</code> (bool) to remove static libraries</p>
+
+<ul>
+<li>Useful to enable this option when exporting compiled releases</li>
+</ul></li>
+<li><p>Added <code>env.bosh.ipv6.enable</code> (bool) to remove ipv6.disable kernel functionality at bootup time</p></li>
+</ul>
+
+<p>Fixes:</p>
+
+<ul>
+<li><p>Fixed sysstat logging</p></li>
+<li><p>Fixed anacron&rsquo;s RANDOM_DELAY configuration</p></li>
+</ul>
+
+<p>Bumps:</p>
+
+<ul>
+<li><p>Bumped s3cli v0.0.60</p>
+
+<ul>
+<li>Updated aws-sdk-go to solve network timeout edge case</li>
+</ul></li>
+<li><p>Bumped davcli v0.0.19</p>
+
+<ul>
+<li>Use TCP keep alive to solve network timeout edge case</li>
+</ul></li>
+<li><p>Bumped bosh-agent v0.0.35</p>
+
+<ul>
+<li>Add <code>-v</code> to the Agent binary</li>
+<li>Prepared <code>sync_dns</code> action to work with future Director&rsquo;s DNS integration</li>
+</ul></li>
+</ul>
+
+<h2><a id="3363-x"></a>v3363.x</h2>
+
+<h3><a name="3363-52"></a>3363.52</h3>
+
+<p><strong>Release Date</strong>: March 28, 2018</p>
+
+<ul>
+<li>Periodic Ubuntu Trusty stemcell bump </li>
+</ul>
+
+<h3><a name="3363-51"></a>3363.51</h3>
+
+<p><strong>Release Date</strong>: March 13, 2018</p>
+
+<ul>
+<li>Periodic Ubuntu Trusty stemcell bump </li>
+</ul>
+
+<h3><a name="3363-50"></a>3363.50</h3>
+
+<p><strong>Release Date</strong>: February 23, 2018</p>
+
+<ul>
+<li>Bump Ubuntu Trusty stemcells for USN-3582-2: Linux kernel (Xenial HWE) vulnerabilities</li>
+</ul>
+
+<h3><a name="3363-48"></a>3363.48</h3>
+
+<p><strong>Release Date</strong>: January 23, 2018</p>
+
+<ul>
+<li>Bump Ubuntu Trusty stemcells for USN-3540-2: Linux kernel (Xenial HWE) vulnerabilities. This addresses the flaw known as Spectre. This update may include degradations to performance. Pivotal will do additional performance testing and provide updates as more information is available.</li>
+</ul>
+
+<h3><a name="3363-47"></a>3363.47</h3>
+
+<p><strong>Release Date</strong>: January 18, 2018</p>
+
+<ul>
+<li>Bump Ubuntu Trusty stemcells for USN-3534-1: GNU C Library vulnerabilities</li>
+</ul>
+
+<h3><a name="3363-46"></a>3363.46</h3>
+
+<p><strong>Release Date</strong>: January 10, 2018</p>
+
+<ul>
+<li>Bumps Ubuntu Trusty stemcells for USN-3522-4; also bumps vSphere stemcells to use VM hardware version 9</li>
+<li>USN-3522-2 introduced a regression in the Linux Hardware Enablement kernel and USN-3522-4 fixes that issue.</li>
+<li>Per the 3363.45 release note, monitor your VMs prior to upgrading to this stemcell and scale your VMs as necessary. </li>
+</ul>
+
+<h3><a name="3363-45"></a>3363.45</h3>
+
+<p><strong>Release Date:</strong> January 10, 2018</p>
+
+<ul>
+<li>Bump Ubuntu Trusty stemcells for USN-3522-2: Linux (Xenial HWE) vulnerability (This flaw is known as Meltdown.)</li>
+</ul>
+
+<h4><a name='critical'></a> USN-3522-2 Addresses Meltdown Vulnerabilities</h4>
+
+<p>Meltdown exploits critical vulnerabilities in modern processors.
+For more information about Meltdown, see the <a href="https://www.cloudfoundry.org/blog/meltdown-spectre-attacks/">Meltdown and Spectre Attacks</a> blog post.
+<a href="https://www.cloudfoundry.org/usn-3522-2/">USN-3522-2</a> addresses the critical vulnerability in Ubuntu associated with Meltdown.
+</br>
+</br>
+This update may include degradations to performance if your VM&rsquo;s CPU and memory usage are currently at near-capacity levels.
+Prior to upgrading to this stemcell, monitor your PCF VM&rsquo;s current CPU and memory usage and scale those components if necessary. If any of your VMs are currently operating at 60% or above, Pivotal recommends scaling that VM.
+For more information about the performance impact of Meltdown-related stemcell patches on PCF components and guidance on scaling, see this <a href="https://discuss.pivotal.io/hc/en-us/articles/360000309953">KB article</a>.
+</br>
+</br>
+For more information about monitoring and scaling PCF, see the <a href="http://docs.pivotal.io/pivotalcf/2-0/customizing/monitoring.html">Monitoring PCF VMs from Ops Manager</a>,
+<a href="https://docs.pivotal.io/pivotalcf/monitoring/key-cap-scaling.html">Key Capacity Scaling Indicators</a>,
+and <a href="../opsguide/scaling-ert-components.html">Scaling PAS</a> topics. Performance degradation is likely to vary by workload type, IaaS, and other factors.
+Pivotal recommends testing your deployment thoroughly after upgrading to this stemcell.</p>
+
+<h3><a name="3363-42"></a>3363.42</h3>
+
+<p><strong>Release Date</strong>: November 29, 2017</p>
+
+<ul>
+<li>Periodic Ubuntu stemcells update</li>
+</ul>
+
+<h3><a name="3363-24"></a>3363.24</h3>
+
+<p><strong>Release Date</strong>: May 22, 2017</p>
+
+<ul>
+<li>Periodic Ubuntu stemcells update</li>
+</ul>
+
+<h3><a name="3363-20"></a>3363.20</h3>
+
+<p><strong>Release Date</strong>: April 25, 2017</p>
+
+<ul>
+<li>Bump Ubuntu stemcells for USN-3265-2: Linux kernel (Xenial HWE) vulnerabilities</li>
+</ul>
+
+<h3><a name="3363-15"></a>3363.15</h3>
+
+<p><strong>Release Date</strong>: April 5, 2017</p>
+
+<ul>
+<li>Bump Ubuntu stemcells for USN-3256-2: Linux kernel (HWE) vulnerability</li>
+</ul>
+
+<p>Misc:</p>
+
+<ul>
+<li>Made AWS AMI backing snapshot public to support encryption of boot disks</li>
+</ul>
+
+<h3><a name="3363-14"></a>3363.14</h3>
+
+<p><strong>Release Date</strong>: March 31, 2017</p>
+
+<ul>
+<li>Bump Ubuntu stemcells for USN-3249-2: Linux kernel (Xenial HWE) vulnerability</li>
+</ul>
+
+<h3><a name="3363-10"></a>3363.10</h3>
+
+<p><strong>Release Date</strong>: March 9, 2017</p>
+
+<ul>
+<li>Bumps Ubuntu stemcells for USN-3220-2: Linux kernel (Xenial HWE) vulnerability</li>
+</ul>
+
+<h3><a name="3363"></a>3363</h3>
+
+<p><strong>Release Date</strong>: February 16, 2017</p>
+
+<p>Reported Problems:</p>
+
+<ul>
+<li><p>DO NOT USE <em>azure</em> stemcell as it may cause data loss.</p></li>
+<li><p><a href="https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1655842">Out of memory errors still exists in Kernel 4.4.0.62</a></p>
+
+<ul>
+<li>will be fixed around Feb 20.</li>
+</ul></li>
+<li><p>rsyslog version updated to 8.24.0, regressing on issue #1537</p></li>
+<li><p>AWS Light stemcell has incorrect name once imported</p></li>
+<li><p>BOSH SSH does not work on BOSH Lite</p></li>
+</ul>
+
+<p>Changes:</p>
+
+<ul>
+<li><p>Add more auditd rules</p></li>
+<li><p>Fix CentOS initramfs to load necessary kernel modules</p></li>
+<li><p>Disable boot loader login</p></li>
+<li><p>Increasing tcp<em>max</em>sync_backlog</p></li>
+<li><p>Disabling any DSA host keys</p></li>
+<li><p>Add <code>bosh_sshers</code> group and assign it to vcap user</p>
+
+<ul>
+<li>Only allow users in <code>bosh_sshers</code> group to SSH</li>
+</ul></li>
+</ul>
+
+<p>Agent:</p>
+
+<ul>
+<li><p>Log Agent API access events in CEF format to syslog (vcap.agent topic)</p></li>
+<li><p>Allow configuring swap size through <code>env.bosh.swap_size</code> (example: <code>env.bosh.swap_size: 0</code>)</p></li>
+<li><p>Prepare for SHA2 releases</p></li>
+<li><p>Allow setting fetching to work with base64 encoded user data</p></li>
+<li><p>Do not delaycompress in logrotate</p></li>
+</ul>
+
+        <div><a id='repo-link' href='http://github.com/pivotal-cf/docs-stemcell-rn/tree/bot-content/example.html.md.erb'>View the source for this page in GitHub</a></div>
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    <div class="copyright">
+  <a href='https://pivotal.io/privacy-policy'>Privacy Policy</a> | 
+  <a href='https://pivotal.io/terms-of-use'>Terms of Use</a><br/>
+  <a href='/'>Pivotal Documentation</a>
+  &copy; 2018 <a href='https://pivotal.io'>Pivotal Software</a>, Inc. All Rights Reserved.
+</div>
+<div class="support">
+  Need help? <a href="http://support.pivotal.io" target="_blank">Visit Support</a>
+</div>
+
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

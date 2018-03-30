@@ -15,8 +15,8 @@ sections:
 
 - repository:
     name: pivotal-cf/docs-stemcell-rn
-    ref: 'bot-book'
-  directory: pivotalcf/2-1/pcf-release-notes/
+    ref: 'bot-content'
+  directory: pivotalcf/2-1/pcf-release-notes
   subnav_template: pcf_metrics_1_4_subnav.erb
   product_info:
     use_local_header: true
